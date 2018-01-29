@@ -13049,6 +13049,10 @@ a.text-dark:focus {
   clip: auto;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   height: 100vh;
 }

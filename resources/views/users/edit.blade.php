@@ -10,7 +10,7 @@
         <div class="card-header">
           <span class="card-title"><i class="fa fa-edit"></i> 编辑个人资料</span>
         </div>
-        <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+        <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
           <div class="card-body">
             @include('common.error')
             <input type="hidden" name="_method" value="PUT">
@@ -30,6 +30,14 @@
               <label for="name-field">个人简介</label>
               <textarea class="form-control" name="introduction" id="introduction-field"
                         rows="3">{{ old('introduction', $user->introduction) }}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="" class="avatar-label">用户头像</label>
+              <input class="form-control-file" type="file" name="avatar">
+              @if($user->avatar)
+                <br>
+                <img class="img-fluid img-thumbnail" src="{{ $user->avatar }}" alt="avatar">
+              @endif
             </div>
           </div>
           <div class="card-footer">
