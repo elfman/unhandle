@@ -18,7 +18,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div class="container {{ route_class() }}-page">
+<div class="{{ route_class() }}-page">
   @include('layouts._header')
 
   @yield('content')

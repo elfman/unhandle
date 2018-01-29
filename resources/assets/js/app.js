@@ -20,3 +20,16 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app'
 // });
+
+const Identicon = require('identicon.js');
+const md5 = require('md5');
+
+$(function ($) {
+
+  $('img[identicon]').each(function(index, elem) {
+    const $elem = $(elem);
+    const data = new Identicon(md5($elem.attr('identicon')), { size: 300, format: 'svg' }).toString();
+    $elem.attr('src', `data:image/svg+xml;base64,${data}`);
+    $elem.show();
+  });
+});

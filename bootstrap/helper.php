@@ -10,3 +10,9 @@ function route_class()
 {
     return str_replace('.', '-', Route::currentRouteName());
 }
+
+function avatarAttr()
+{
+    $user = Auth::user();
+    return $user->avatar === null ? "identicon=$user->email" :"src=$user->avatar";
+}
