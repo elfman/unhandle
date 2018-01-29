@@ -21,6 +21,9 @@
 <div class="{{ route_class() }}-page">
   @include('layouts._header')
 
+  <div class="container">
+    @include('layouts._message')
+  </div>
   @yield('content')
 
   @include('layouts._footer')

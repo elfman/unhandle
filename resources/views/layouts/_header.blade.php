@@ -29,12 +29,16 @@
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <span class="fa fa-user" aria-hidden="true"></span>
                 个人中心
               </a>
+              <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                编辑资料
+              </a>
               <a class="dropdown-item" href="#" onclick="$('#logoutForm').submit()">
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                  退出登录
+                <span class="fa fa-sign-out" aria-hidden="true"></span>
+                退出登录
               </a>
               <form action="{{ route('logout') }}" method="POST" id="logoutForm">
                 {{ csrf_field() }}
