@@ -34,8 +34,10 @@ class QuestionsController extends Controller
 
 	public function store(QuestionRequest $request)
 	{
-		$question = Question::create($request->all());
-		return redirect()->route('questions.show', $question->id)->with('message', 'Created successfully.');
+	    $data = $request->only(['title', 'body']);
+	    $data['user_id'] = Auth::id();
+		$question = Question::create($data);
+		return redirect()->route('questions.show', $question->id)->with('message', '成功创建问题');
 	}
 
 	public function edit(Question $question)

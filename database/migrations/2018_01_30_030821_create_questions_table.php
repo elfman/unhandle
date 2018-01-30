@@ -14,16 +14,16 @@ class CreateQuestionsTable extends Migration
             $table->string('title')->index();
             $table->text('brief');
             $table->longText('body');
-            $table->integer('user_id');
+            $table->unsignedInteger('user_id');
             $table->integer('vote_count')->default(0);
-            $table->unsignedInteger('solved_by_answer')->nullable();
+            $table->unsignedInteger('solved_by')->nullable();
             $table->unsignedInteger('view_count')->default(0);
             $table->unsignedInteger('answer_count')->default(0);
             $table->timestamps();
 
             $table->softDeletes();
 
-            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 	}
 

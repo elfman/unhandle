@@ -12,7 +12,8 @@ class QuestionRequest extends Request
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
+                    'title' => 'required|string|length:10,80',
+                    'body' => 'required|string|length:2'
                 ];
             }
             // UPDATE
