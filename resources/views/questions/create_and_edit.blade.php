@@ -24,8 +24,28 @@
 
 @section('script')
     <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
+    <script src="/js/inline-attachment.js"></script>
 
     <script>
-        var simplemde = new SimpleMDE({ element: $('#editor')[0]});
+        var simplemde = new SimpleMDE({
+          element: $('#editor')[0],
+          spellChecker: false,
+        });
+
+        var inlineAttachmentConfig = {
+          uploadUrl: '/upload_image',
+          extraHeaders: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]')[0].content,
+          },
+          onFileUploadResponse: function (xhr) {
+            var result = JSON.parse(xhr.responseText);
+
+            if (result && result.success) {
+
+            }
+          }
+        };
+
+        inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, inlineAttachmentConfig)
     </script>
 @endsection

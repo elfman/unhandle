@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionsController extends Controller
 {
@@ -56,5 +58,27 @@ class QuestionsController extends Controller
 		$question->delete();
 
 		return redirect()->route('questions.index')->with('message', 'Deleted successfully.');
+	}
+
+    public function uploadImage(Request $request, ImageUploadHandler $uploader)
+    {
+        $data = [
+            'success' => false,
+            'msg' => '上传失败！',
+            'path' => ''
+        ];
+
+        if ($file = $request->file) {
+            $result = $uploader->save($file, 'questions', Auth::id(), 1024);
+
+            if ($result) {
+                $data = [
+                    'success' => true,
+                    'msg' => '上传成功',
+                    'filename' => $result['path'],
+                ];
+            }
+        }
+        return $data;
 	}
 }
