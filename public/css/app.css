@@ -13076,12 +13076,201 @@ img[identicon] {
   border-radius: 50%;
 }
 
-.login-page .container,
-.register-page .container {
-  margin-top: 2rem;
-}
-
 .users-show-page .info-header {
   font-size: 1.5rem;
+}
+
+.questions-index-page .question {
+  padding: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.questions-index-page .question > .left {
+  width: 6rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.questions-index-page .question > .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.questions-index-page .question > .right .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.questions-index-page .question .vote-count,
+.questions-index-page .question .answer-count {
+  margin-top: 4px;
+  color: #6a737c;
+}
+
+.questions-index-page .question .vote-count > span,
+.questions-index-page .question .answer-count > span {
+  font-size: 1.5em;
+  display: block;
+}
+
+.questions-index-page .question .view-count {
+  color: #242729;
+  margin-top: 8px;
+}
+
+.questions-index-page .question .view-count > span {
+  font-size: 1.3em;
+}
+
+.questions-index-page .question .title {
+  font-size: 1.3rem;
+}
+
+.questions-index-page .question .brief {
+  color: #3b4045;
+}
+
+.questions-index-page .question .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 5px 6px 7px 7px;
+  float: right;
+  width: 13rem;
+}
+
+.questions-index-page .question .user-info.owner {
+  background-color: #e0eaf1;
+}
+
+.questions-index-page .question .user-info > div:nth-child(2) {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.questions-index-page .question .user-info .user-action-time {
+  font-size: 0.8rem;
+  color: #848d95;
+}
+
+.questions-index-page .question .user-info .avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.questions-index-page .question .user-info .user-details {
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+.questions-show-page .question {
+  padding: 10px;
+}
+
+.questions-show-page .question .title {
+  font-size: 1.5rem;
+  line-height: 1.8em;
+  height: 1.8em;
+  padding-left: 14px;
+}
+
+.questions-show-page .question .title + hr {
+  margin-top: 14px;
+}
+
+.questions-show-page .question .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.questions-show-page .question .content > .left {
+  width: 4rem;
+}
+
+.questions-show-page .question .content > .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.questions-show-page .question .content .vote {
+  text-align: center;
+  color: #6a737c;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.questions-show-page .question .content .vote .vote-count {
+  position: relative;
+  top: 1rem;
+}
+
+.questions-show-page .question .content .vote .up,
+.questions-show-page .question .content .vote .down {
+  font-size: 3rem;
+  line-height: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.questions-show-page .question .content .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 5px 6px 7px 7px;
+  float: right;
+  width: 13rem;
+}
+
+.questions-show-page .question .content .user-info.owner {
+  background-color: #e0eaf1;
+}
+
+.questions-show-page .question .content .user-info > div:nth-child(2) {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.questions-show-page .question .content .user-info .user-action-time {
+  font-size: 0.8rem;
+}
+
+.questions-show-page .question .content .user-info .avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.questions-show-page .question .content .user-info .user-details {
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 0.8rem;
 }
 

@@ -12,10 +12,12 @@ class QuestionObserver
     public function creating(Question $question)
     {
         $question->brief = getTextBrief($question->body);
+        $question->body = htmlspecialchars($question->body);
     }
 
     public function updating(Question $question)
     {
         $question->brief = getTextBrief($question->body);
+        $question->body = htmlspecialchars($question->body);
     }
 }

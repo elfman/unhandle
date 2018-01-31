@@ -1,44 +1,44 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+@endsection
+
 @section('content')
-
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>Question / Show #{{ $question->id }}</h1>
+    <div class="card question">
+        <div class="title">{{ $question->title }}</div>
+        <hr>
+        <div class="content">
+            <div class="left">
+                <div class="vote">
+                    <div class="up"><i class="fa fa-sort-up"></i></div>
+                    <div class="vote-count">{{ $question->vote_count }}</div>
+                    <div class="down"><i class="fa fa-sort-down"></i></div>
+                </div>
             </div>
-
-            <div class="panel-body">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ route('questions.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                        </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('questions.edit', $question->id) }}">
-                                <i class="glyphicon glyphicon-edit"></i> Edit
-                            </a>
+            <div class="right">
+                <div class="body">
+                    {!! parseMarkdown($question->body) !!}
+                </div>
+                <div class="actions">
+                    <div class="user-info owner">
+                        <div class="user-action-time">asked {{ $question->created_at }}</div>
+                        <div>
+                            <img class="avatar" {{ avatarAttr($question->user) }} alt="">
+                            <div class="user-details">
+                                <div class="name">
+                                    <a href="{{ route('users.show', $question->user->id) }}">
+                                        {{ $question->user->name }}
+                                    </a>
+                                </div>
+                                <div class="score">{{ $question->user->email }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <label>Title</label>
-<p>
-	{{ $question->title }}
-</p> <label>Body</label>
-<p>
-	{{ $question->body }}
-</p> <label>Vote_count</label>
-<p>
-	{{ $question->vote_count }}
-</p> <label>User_id</label>
-<p>
-	{{ $question->user_id }}
-</p>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

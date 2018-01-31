@@ -7,13 +7,13 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        $users = factory(User::class)->times(50)->make()->each(function ($user) {
-            if ($user->id === 1) {
-                $user->name = 'Harlan';
-                $user->email = 'luoxwen@gmail.com';
-            }
-        });
+        $users = factory(User::class)->times(50)->make();
 
         User::insert($users->makeVisible('password')->makeVisible('remember_token')->toArray());
+
+        $user = User::find(1);
+        $user->name = 'Harlan';
+        $user->email = 'luoxwen@gmail.com';
+        $user->save();
     }
 }

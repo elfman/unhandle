@@ -12,8 +12,8 @@ class QuestionRequest extends Request
             case 'POST':
             {
                 return [
-                    'title' => 'required|string|length:10,80',
-                    'body' => 'required|string|length:2'
+                    'title' => 'required|string|min:10|max:80',
+                    'body' => 'required|string|min:3'
                 ];
             }
             // UPDATE
@@ -21,7 +21,8 @@ class QuestionRequest extends Request
             case 'PATCH':
             {
                 return [
-                    // UPDATE ROLES
+                    'title' => 'required|string|min:10|max:80',
+                    'body' => 'required|string|min:3'
                 ];
             }
             case 'GET':

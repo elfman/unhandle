@@ -12,12 +12,12 @@ $factory->define(App\Models\Question::class, function (Faker $faker) {
     $created_at = $faker->dateTimeThisMonth($updated_at);
 
     $body = $faker->text(500);
-    $brief = getTextBrief($body);
+//    $brief = getTextBrief($body);
 
     return [
         'title' => $faker->sentence,
         'body' => $body,
-        'brief' => $brief,
+//        'brief' => $brief,
         'user_id' => $faker->randomElement($user_ids),
         'created_at' => $created_at,
         'updated_at' => $updated_at,
