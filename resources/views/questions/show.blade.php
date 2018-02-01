@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.css">
 @endsection
 
 @section('content')
@@ -18,10 +18,15 @@
                 </div>
             </div>
             <div class="right">
-                <div class="body">
-                    {!! parseMarkdown($question->body) !!}
+                <div class="body markdown-body">
+                    {!! Parsedown::instance()->text($question->body) !!}
                 </div>
                 <div class="actions">
+                    <div class="tags">
+                        @foreach($question->tags->pluck('name')->toArray() as $tag)
+                            <span class="badge badge-info">{{ $tag }}</span>
+                        @endforeach
+                    </div>
                     <div class="user-info owner">
                         <div class="user-action-time">asked {{ $question->created_at }}</div>
                         <div>

@@ -24,6 +24,7 @@ class QuestionsController extends Controller
 
     public function show(Question $question)
     {
+        \Log::info($question->body);
         return view('questions.show', compact('question'));
     }
 
@@ -36,7 +37,17 @@ class QuestionsController extends Controller
 	{
 	    $data = $request->only(['title', 'body']);
 	    $data['user_id'] = Auth::id();
+
+
 		$question = Question::create($data);
+
+        $tags = $request->get('tags');
+        $tags = explode(',', $tags);
+        if (sizeof($tags) === 0) {
+            array_push($tags, 'untag');
+        }
+		$question->attachTags($tags);
+
 		return redirect()->route('questions.show', $question->id)->with('message', '成功创建问题');
 	}
 

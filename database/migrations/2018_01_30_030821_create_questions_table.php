@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('solved_by')->nullable();
             $table->unsignedInteger('view_count')->default(0);
             $table->unsignedInteger('answer_count')->default(0);
+
             $table->timestamps();
 
             $table->softDeletes();

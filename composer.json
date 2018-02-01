@@ -11,6 +11,9 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "mews/purifier": "^2.0",
+        "overtrue/pinyin": "~3.0",
+        "spatie/laravel-tags": "^2.0",
         "yzalis/identicon": "^1.2"
     },
     "require-dev": {

@@ -12,12 +12,15 @@ class QuestionObserver
     public function creating(Question $question)
     {
         $question->brief = getTextBrief($question->body);
-        $question->body = htmlspecialchars($question->body);
+        $body = clean($question->body, 'question_body');
+
+        $question->body = preg_replace('/^(\&gt; )/m', '> ', $body);
+
     }
 
     public function updating(Question $question)
     {
         $question->brief = getTextBrief($question->body);
-        $question->body = htmlspecialchars($question->body);
+        $question->body = clean($question->body, 'question_body');
     }
 }

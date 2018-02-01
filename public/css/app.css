@@ -3583,7 +3583,8 @@ tbody.collapse.show {
   margin-left: 0;
 }
 
-.dropdown-menu {
+.dropdown-menu,
+span.twitter-typeahead .tt-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -3603,7 +3604,9 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-.dropup .dropdown-menu {
+.dropup .dropdown-menu,
+.dropup span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .dropup .tt-menu {
   margin-top: 0;
   margin-bottom: 0.125rem;
 }
@@ -3625,7 +3628,9 @@ tbody.collapse.show {
   margin-left: 0;
 }
 
-.dropright .dropdown-menu {
+.dropright .dropdown-menu,
+.dropright span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .dropright .tt-menu {
   margin-top: 0;
   margin-left: 0.125rem;
 }
@@ -3650,7 +3655,9 @@ tbody.collapse.show {
   vertical-align: 0;
 }
 
-.dropleft .dropdown-menu {
+.dropleft .dropdown-menu,
+.dropleft span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .dropleft .tt-menu {
   margin-top: 0;
   margin-right: 0.125rem;
 }
@@ -3695,7 +3702,8 @@ tbody.collapse.show {
   border-top: 1px solid #e9ecef;
 }
 
-.dropdown-item {
+.dropdown-item,
+span.twitter-typeahead .tt-suggestion {
   display: block;
   width: 100%;
   padding: 0.25rem 1.5rem;
@@ -3709,26 +3717,34 @@ tbody.collapse.show {
 }
 
 .dropdown-item:hover,
-.dropdown-item:focus {
+span.twitter-typeahead .tt-suggestion:hover,
+.dropdown-item:focus,
+span.twitter-typeahead .tt-suggestion:focus {
   color: #16181b;
   text-decoration: none;
   background-color: #f8f9fa;
 }
 
 .dropdown-item.active,
-.dropdown-item:active {
+span.twitter-typeahead .active.tt-suggestion,
+span.twitter-typeahead .tt-suggestion.tt-cursor,
+.dropdown-item:active,
+span.twitter-typeahead .tt-suggestion:active {
   color: #fff;
   text-decoration: none;
   background-color: #007bff;
 }
 
 .dropdown-item.disabled,
-.dropdown-item:disabled {
+span.twitter-typeahead .disabled.tt-suggestion,
+.dropdown-item:disabled,
+span.twitter-typeahead .tt-suggestion:disabled {
   color: #6c757d;
   background-color: transparent;
 }
 
-.dropdown-menu.show {
+.dropdown-menu.show,
+span.twitter-typeahead .show.tt-menu {
   display: block;
 }
 
@@ -4338,7 +4354,9 @@ tbody.collapse.show {
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
-.nav-tabs .dropdown-menu {
+.nav-tabs .dropdown-menu,
+.nav-tabs span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .nav-tabs .tt-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -4442,7 +4460,9 @@ tbody.collapse.show {
   padding-left: 0;
 }
 
-.navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu,
+.navbar-nav span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .navbar-nav .tt-menu {
   position: static;
   float: none;
 }
@@ -4518,7 +4538,9 @@ tbody.collapse.show {
             flex-direction: row;
   }
 
-  .navbar-expand-sm .navbar-nav .dropdown-menu {
+  .navbar-expand-sm .navbar-nav .dropdown-menu,
+  .navbar-expand-sm .navbar-nav span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-sm .navbar-nav .tt-menu {
     position: absolute;
   }
 
@@ -4550,7 +4572,9 @@ tbody.collapse.show {
     display: none;
   }
 
-  .navbar-expand-sm .dropup .dropdown-menu {
+  .navbar-expand-sm .dropup .dropdown-menu,
+  .navbar-expand-sm .dropup span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-sm .dropup .tt-menu {
     top: auto;
     bottom: 100%;
   }
@@ -4582,7 +4606,9 @@ tbody.collapse.show {
             flex-direction: row;
   }
 
-  .navbar-expand-md .navbar-nav .dropdown-menu {
+  .navbar-expand-md .navbar-nav .dropdown-menu,
+  .navbar-expand-md .navbar-nav span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-md .navbar-nav .tt-menu {
     position: absolute;
   }
 
@@ -4614,7 +4640,9 @@ tbody.collapse.show {
     display: none;
   }
 
-  .navbar-expand-md .dropup .dropdown-menu {
+  .navbar-expand-md .dropup .dropdown-menu,
+  .navbar-expand-md .dropup span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-md .dropup .tt-menu {
     top: auto;
     bottom: 100%;
   }
@@ -4646,7 +4674,9 @@ tbody.collapse.show {
             flex-direction: row;
   }
 
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
+  .navbar-expand-lg .navbar-nav .dropdown-menu,
+  .navbar-expand-lg .navbar-nav span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-lg .navbar-nav .tt-menu {
     position: absolute;
   }
 
@@ -4678,7 +4708,9 @@ tbody.collapse.show {
     display: none;
   }
 
-  .navbar-expand-lg .dropup .dropdown-menu {
+  .navbar-expand-lg .dropup .dropdown-menu,
+  .navbar-expand-lg .dropup span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-lg .dropup .tt-menu {
     top: auto;
     bottom: 100%;
   }
@@ -4710,7 +4742,9 @@ tbody.collapse.show {
             flex-direction: row;
   }
 
-  .navbar-expand-xl .navbar-nav .dropdown-menu {
+  .navbar-expand-xl .navbar-nav .dropdown-menu,
+  .navbar-expand-xl .navbar-nav span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-xl .navbar-nav .tt-menu {
     position: absolute;
   }
 
@@ -4742,7 +4776,9 @@ tbody.collapse.show {
     display: none;
   }
 
-  .navbar-expand-xl .dropup .dropdown-menu {
+  .navbar-expand-xl .dropup .dropdown-menu,
+  .navbar-expand-xl .dropup span.twitter-typeahead .tt-menu,
+  span.twitter-typeahead .navbar-expand-xl .dropup .tt-menu {
     top: auto;
     bottom: 100%;
   }
@@ -4771,7 +4807,9 @@ tbody.collapse.show {
           flex-direction: row;
 }
 
-.navbar-expand .navbar-nav .dropdown-menu {
+.navbar-expand .navbar-nav .dropdown-menu,
+.navbar-expand .navbar-nav span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .navbar-expand .navbar-nav .tt-menu {
   position: absolute;
 }
 
@@ -4803,7 +4841,9 @@ tbody.collapse.show {
   display: none;
 }
 
-.navbar-expand .dropup .dropdown-menu {
+.navbar-expand .dropup .dropdown-menu,
+.navbar-expand .dropup span.twitter-typeahead .tt-menu,
+span.twitter-typeahead .navbar-expand .dropup .tt-menu {
   top: auto;
   bottom: 100%;
 }
@@ -13047,6 +13087,26 @@ a.text-dark:focus {
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+.input-group span.twitter-typeahead {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 1%;
+}
+
+.input-group span.twitter-typeahead .tt-menu,
+.input-group span.twitter-typeahead .tt-hint,
+.input-group span.twitter-typeahead .tt-input {
+  width: 100%;
 }
 
 html {
