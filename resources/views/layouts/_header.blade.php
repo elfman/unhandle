@@ -19,6 +19,11 @@
           <li class="nav-item"><a href="/login" class="nav-link">登录</a></li>
           <li class="nav-item"><a href="/register" class="nav-link">注册</a></li>
         @else
+          <li class="button-ask">
+            <a href="{{ route('questions.create') }}" role="button" class="btn btn-primary">
+              提问题
+            </a>
+          </li>
           <li class="nav-item dropdown" style="cursor: pointer;">
             <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <span>

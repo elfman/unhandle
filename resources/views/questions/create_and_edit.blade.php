@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container main-content">
-    <form action="{{ route('questions.store') }}" method="POST">
+  <div class="container">
+    @if ($question->id)
+      <form action="{{ route('questions.update', $question->id) }}" method="POST">
+        {{ method_field('PUT') }}
+    @else
+      <form action="{{ route('questions.store') }}" method="POST">
+    @endif
       @include('common.error')
       {{ csrf_field() }}
       <div class="form-group">
@@ -23,9 +28,6 @@
     </form>
   </div>
 
-@endsection
-
-@section('style')
 @endsection
 
 @section('script')

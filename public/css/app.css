@@ -13136,6 +13136,10 @@ img[identicon] {
   border-radius: 50%;
 }
 
+.navbar .button-ask {
+  margin-right: 16px;
+}
+
 .users-show-page .info-header {
   font-size: 1.5rem;
 }
@@ -13240,6 +13244,88 @@ img[identicon] {
   font-size: 0.8rem;
 }
 
+.questions-show-page .vote {
+  text-align: center;
+  color: #6a737c;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.questions-show-page .vote .vote-count {
+  position: relative;
+  top: 1rem;
+}
+
+.questions-show-page .vote .up,
+.questions-show-page .vote .down {
+  font-size: 3rem;
+  line-height: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.questions-show-page .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 5px 6px 7px 7px;
+  float: right;
+  width: 13rem;
+}
+
+.questions-show-page .user-info.owner {
+  background-color: #e0eaf1;
+}
+
+.questions-show-page .user-info > div:nth-child(2) {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.questions-show-page .user-info .user-action-time {
+  font-size: 0.8rem;
+}
+
+.questions-show-page .user-info .avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.questions-show-page .user-info .user-details {
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.questions-show-page .content,
+.questions-show-page .answer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.questions-show-page .content > .left,
+.questions-show-page .answer > .left {
+  width: 4rem;
+}
+
+.questions-show-page .content > .right,
+.questions-show-page .answer > .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .questions-show-page .question {
   padding: 10px;
 }
@@ -13255,82 +13341,25 @@ img[identicon] {
   margin-top: 14px;
 }
 
-.questions-show-page .question .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.questions-show-page .answer {
+  padding: 10px;
 }
 
-.questions-show-page .question .content > .left {
-  width: 4rem;
+.questions-show-page .answer .vote {
+  font-size: 1.6rem;
 }
 
-.questions-show-page .question .content > .right {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+.questions-show-page .answer .vote-count {
+  top: 0.9rem;
 }
 
-.questions-show-page .question .content .vote {
-  text-align: center;
-  color: #6a737c;
+.questions-show-page .answer .up,
+.questions-show-page .answer .down {
+  font-size: 2.6rem;
+}
+
+.questions-show-page .answer-count {
   font-size: 1.8rem;
-  line-height: 1;
-}
-
-.questions-show-page .question .content .vote .vote-count {
-  position: relative;
-  top: 1rem;
-}
-
-.questions-show-page .question .content .vote .up,
-.questions-show-page .question .content .vote .down {
-  font-size: 3rem;
-  line-height: 1rem;
-  height: 1rem;
-  cursor: pointer;
-}
-
-.questions-show-page .question .content .user-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  padding: 5px 6px 7px 7px;
-  float: right;
-  width: 13rem;
-}
-
-.questions-show-page .question .content .user-info.owner {
-  background-color: #e0eaf1;
-}
-
-.questions-show-page .question .content .user-info > div:nth-child(2) {
-  margin-top: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.questions-show-page .question .content .user-info .user-action-time {
-  font-size: 0.8rem;
-}
-
-.questions-show-page .question .content .user-info .avatar {
-  width: 32px;
-  height: 32px;
-}
-
-.questions-show-page .question .content .user-info .user-details {
-  margin-left: 10px;
-  display: inline-block;
-  font-size: 0.8rem;
+  margin-left: 1rem;
 }
 

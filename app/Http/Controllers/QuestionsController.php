@@ -24,7 +24,7 @@ class QuestionsController extends Controller
 
     public function show(Question $question)
     {
-        \Log::info($question->body);
+        $question->with(['answer', 'answer.user', 'user']);
         return view('questions.show', compact('question'));
     }
 

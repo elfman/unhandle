@@ -22,12 +22,3 @@ function getTextBrief($text)
     $text = substr($text, 0, min(strlen($text), 300));
     return strip_tags((new Parsedown())->text($text));
 }
-
-function parseMarkdown($text)
-{
-    static $parser;
-
-    $parser = $parser ?: new Parsedown();
-
-    return $parser->text($text);
-}

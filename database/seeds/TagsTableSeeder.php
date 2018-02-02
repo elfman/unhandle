@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Spatie\Tags\Tag;
 
 class TagsTableSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class TagsTableSeeder extends Seeder
             ];
         }, $tagNames);
 
-        \Spatie\Tags\Tag::insert($data);
+        Tag::insert($data);
+
     }
 }

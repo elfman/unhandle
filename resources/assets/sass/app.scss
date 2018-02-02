@@ -31,6 +31,10 @@ img[identicon] {
     height: 2rem;
     border-radius: 50%;
   }
+
+  .button-ask {
+    margin-right: 16px;
+  }
 }
 
 .login-page, .register-page {
@@ -118,6 +122,64 @@ img[identicon] {
 }
 
 .questions-show-page {
+  .vote {
+    text-align: center;
+    color: rgb(106, 115, 124);
+    font-size: 1.8rem;
+    line-height: 1;
+
+    .vote-count {
+      position: relative;
+      top: 1rem;
+    }
+    .up, .down {
+      font-size: 3rem;
+      line-height: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px 6px 7px 7px;
+    float: right;
+    width: 13rem;
+
+    &.owner {
+      background-color: rgb(224, 234, 241);
+    }
+
+    >div:nth-child(2) {
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    .user-action-time {
+      font-size: 0.8rem;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+    }
+    .user-details {
+      margin-left: 10px;
+      display: inline-block;
+      font-size: 0.8rem;
+    }
+  }
+  .content, .answer {
+    display: flex;
+    > .left {
+      width: 4rem;
+    }
+    > .right {
+      flex: 1;
+    }
+
+  }
   .question {
     padding: 10px;
     .title {
@@ -130,62 +192,23 @@ img[identicon] {
         margin-top: 14px;
       }
     }
-    .content {
-      display: flex;
-      > .left {
-        width: 4rem;
-      }
-      > .right {
-        flex: 1;
-      }
-      .vote {
-        text-align: center;
-        color: rgb(106, 115, 124);
-        font-size: 1.8rem;
-        line-height: 1;
+  }
 
-        .vote-count {
-          position: relative;
-          top: 1rem;
-        }
-        .up, .down {
-          font-size: 3rem;
-          line-height: 1rem;
-          height: 1rem;
-          cursor: pointer;
-        }
-      }
-      .user-info {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 5px 6px 7px 7px;
-        float: right;
-        width: 13rem;
-
-        &.owner {
-          background-color: rgb(224, 234, 241);
-        }
-
-        >div:nth-child(2) {
-          margin-top: 4px;
-          display: flex;
-          align-items: center;
-        }
-
-        .user-action-time {
-          font-size: 0.8rem;
-        }
-        .avatar {
-          width: 32px;
-          height: 32px;
-        }
-        .user-details {
-          margin-left: 10px;
-          display: inline-block;
-          font-size: 0.8rem;
-        }
-      }
+  .answer {
+    padding: 10px;
+    .vote {
+      font-size: 1.6rem;
     }
+    .vote-count {
+      top: 0.9rem;
+    }
+    .up, .down {
+      font-size: 2.6rem;
+    }
+  }
+
+  .answer-count {
+    font-size: 1.8rem;
+    margin-left: 1rem;
   }
 }
