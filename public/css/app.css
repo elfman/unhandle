@@ -13145,7 +13145,8 @@ img[identicon] {
 }
 
 .questions-index-page .question,
-.root-page .question {
+.root-page .question,
+.questions-my-page .question {
   padding: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13153,21 +13154,24 @@ img[identicon] {
 }
 
 .questions-index-page .question > .left,
-.root-page .question > .left {
+.root-page .question > .left,
+.questions-my-page .question > .left {
   width: 6rem;
   font-size: 0.8rem;
   text-align: center;
 }
 
 .questions-index-page .question > .right,
-.root-page .question > .right {
+.root-page .question > .right,
+.questions-my-page .question > .right {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 .questions-index-page .question > .right .actions,
-.root-page .question > .right .actions {
+.root-page .question > .right .actions,
+.questions-my-page .question > .right .actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13179,7 +13183,9 @@ img[identicon] {
 .questions-index-page .question .vote-count,
 .questions-index-page .question .answer-count,
 .root-page .question .vote-count,
-.root-page .question .answer-count {
+.root-page .question .answer-count,
+.questions-my-page .question .vote-count,
+.questions-my-page .question .answer-count {
   margin-top: 4px;
   color: #6a737c;
 }
@@ -13187,34 +13193,41 @@ img[identicon] {
 .questions-index-page .question .vote-count > span,
 .questions-index-page .question .answer-count > span,
 .root-page .question .vote-count > span,
-.root-page .question .answer-count > span {
+.root-page .question .answer-count > span,
+.questions-my-page .question .vote-count > span,
+.questions-my-page .question .answer-count > span {
   font-size: 1.5em;
   display: block;
 }
 
 .questions-index-page .question .view-count,
-.root-page .question .view-count {
+.root-page .question .view-count,
+.questions-my-page .question .view-count {
   color: #242729;
   margin-top: 8px;
 }
 
 .questions-index-page .question .view-count > span,
-.root-page .question .view-count > span {
+.root-page .question .view-count > span,
+.questions-my-page .question .view-count > span {
   font-size: 1.3em;
 }
 
 .questions-index-page .question .title,
-.root-page .question .title {
+.root-page .question .title,
+.questions-my-page .question .title {
   font-size: 1.3rem;
 }
 
 .questions-index-page .question .brief,
-.root-page .question .brief {
+.root-page .question .brief,
+.questions-my-page .question .brief {
   color: #3b4045;
 }
 
 .questions-index-page .question .user-info,
-.root-page .question .user-info {
+.root-page .question .user-info,
+.questions-my-page .question .user-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13229,12 +13242,14 @@ img[identicon] {
 }
 
 .questions-index-page .question .user-info.owner,
-.root-page .question .user-info.owner {
+.root-page .question .user-info.owner,
+.questions-my-page .question .user-info.owner {
   background-color: #e0eaf1;
 }
 
 .questions-index-page .question .user-info > div:nth-child(2),
-.root-page .question .user-info > div:nth-child(2) {
+.root-page .question .user-info > div:nth-child(2),
+.questions-my-page .question .user-info > div:nth-child(2) {
   margin-top: 4px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13245,19 +13260,22 @@ img[identicon] {
 }
 
 .questions-index-page .question .user-info .user-action-time,
-.root-page .question .user-info .user-action-time {
+.root-page .question .user-info .user-action-time,
+.questions-my-page .question .user-info .user-action-time {
   font-size: 0.8rem;
   color: #848d95;
 }
 
 .questions-index-page .question .user-info .avatar,
-.root-page .question .user-info .avatar {
+.root-page .question .user-info .avatar,
+.questions-my-page .question .user-info .avatar {
   width: 32px;
   height: 32px;
 }
 
 .questions-index-page .question .user-info .user-details,
-.root-page .question .user-info .user-details {
+.root-page .question .user-info .user-details,
+.questions-my-page .question .user-info .user-details {
   margin-left: 10px;
   font-size: 0.8rem;
 }

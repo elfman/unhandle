@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a href="#" class="nav-link">Home</a>
+          <a href="/" class="nav-link">首页</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Link</a>
+          <a href="{{ route('questions.my') }}" class="nav-link">我的问题</a>
         </li>
       </ul>
       <ul class="navbar-nav">

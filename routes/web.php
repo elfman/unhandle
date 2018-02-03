@@ -16,6 +16,7 @@ Route::get('/', 'QuestionsController@index')->name('root');
 Auth::routes();
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+Route::get('/questions/my', 'QuestionsController@my')->name('questions.my');
 Route::resource('questions', 'QuestionsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::post('/upload_image', 'QuestionsController@uploadImage')->name('questions.upload_image');

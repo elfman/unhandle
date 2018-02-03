@@ -109,4 +109,11 @@ class QuestionsController extends Controller
             'vote_change' => $vote_change,
         ]);
 	}
+
+    public function my()
+    {
+        $questions = Question::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(20);
+        return view('questions.index', compact('questions'));
+
+	}
 }
