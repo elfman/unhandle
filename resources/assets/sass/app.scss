@@ -46,7 +46,7 @@ img[identicon] {
   }
 }
 
-.questions-index-page {
+.questions-index-page, .root-page {
   .question {
     padding: 8px;
     display: flex;
@@ -122,23 +122,7 @@ img[identicon] {
 }
 
 .questions-show-page {
-  .vote {
-    text-align: center;
-    color: rgb(106, 115, 124);
-    font-size: 1.8rem;
-    line-height: 1;
 
-    .vote-count {
-      position: relative;
-      top: 1rem;
-    }
-    .up, .down {
-      font-size: 3rem;
-      line-height: 1rem;
-      height: 1rem;
-      cursor: pointer;
-    }
-  }
   .user-info {
     display: flex;
     align-items: center;

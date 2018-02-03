@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/page-question-show.js": "/js/page-question-show.js",
     "/js/inline-attachment.js": "/js/inline-attachment.js",
     "/css/tagsinput.css": "/css/tagsinput.css"
 }

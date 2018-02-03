@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnswerRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class AnswersController extends Controller
 {
@@ -50,4 +51,20 @@ class AnswersController extends Controller
 
 		return redirect()->route('answers.index')->with('message', 'Deleted successfully.');
 	}
+
+    public function vote(Answer $answer)
+    {
+        $this->authorize('vote', $answer);
+        if (Route::currentRouteName() === 'answers.upvote') {
+            $vote_change = $answer->upvote();
+        } else {
+            $vote_change = $answer->downvote();
+        }
+
+        return response()->json([
+            'code' => 0,
+            'vote_change' => $vote_change,
+        ]);
+	}
+
 }

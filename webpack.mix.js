@@ -16,4 +16,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
   .js('resources/assets/js/inline-attachment.js', 'public/js/inline-attachment.js')
   .copy('node_modules/bootstrap4-tagsinput/tagsinput.css', 'public/css/tagsinput.css')
   .copyDirectory('node_modules/simplemde/dist/', 'public/js/simplemde/')
+  .js('resources/assets/js/page-question-show.js', 'public/js/')
 ;

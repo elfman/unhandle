@@ -22,3 +22,8 @@ Route::post('/upload_image', 'QuestionsController@uploadImage')->name('questions
 Route::resource('answers', 'AnswersController', ['only' => ['store', 'update', 'edit', 'destroy']]);
 
 Route::get('/questions/{question}/answer', 'AnswersController@create')->name('answers.create');
+
+Route::post('/questions/{question}/upvote', 'QuestionsController@vote')->name('questions.upvote');
+Route::post('/questions/{question}/downvote', 'QuestionsController@vote')->name('questions.downvote');
+Route::post('/answers/{answer}/upvote', 'AnswersController@vote')->name('answers.upvote');
+Route::post('/answers/{answer}/downvote', 'AnswersController@vote')->name('answers.downvote');

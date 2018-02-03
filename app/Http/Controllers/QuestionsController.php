@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class QuestionsController extends Controller
 {
@@ -93,5 +94,19 @@ class QuestionsController extends Controller
             }
         }
         return $data;
+	}
+
+    public function vote(Question $question)
+    {
+        if (Route::currentRouteName() === 'questions.upvote') {
+            $vote_change = $question->upvote();
+        } else {
+            $vote_change = $question->downvote();
+        }
+
+        return response()->json([
+            'code' => 0,
+            'vote_change' => $vote_change,
+        ]);
 	}
 }
