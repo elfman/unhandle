@@ -20,7 +20,7 @@
       </div>
       <div class="form-group markdown-body">
         <label for="editor">内容</label>
-        <textarea name="body" id="editor">{{ old('body', $question->body) }}</textarea>
+        <textarea name="body" id="editor" style="visibility: hidden;">{{ old('body', $question->body) }}</textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">保存</button>
@@ -46,6 +46,7 @@
       spellChecker: false,
       autoDownloadFontAwesome: false,
     });
+
 
     var inlineAttachmentConfig = {
       uploadUrl: '/upload_image',

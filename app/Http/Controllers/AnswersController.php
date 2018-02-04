@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnswerRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class AnswersController extends Controller
@@ -41,7 +42,8 @@ class AnswersController extends Controller
 		$this->authorize('update', $answer);
 		$answer->update($request->all());
 
-		return redirect()->route('answers.show', $answer->id)->with('message', 'Updated successfully.');
+		$url = route('questions.show', $answer->question->id) . '#answer' . $answer->id;
+		return Redirect::to($url)->with('message', '修改成功');
 	}
 
 	public function destroy(Answer $answer)
@@ -49,7 +51,9 @@ class AnswersController extends Controller
 		$this->authorize('destroy', $answer);
 		$answer->delete();
 
-		return redirect()->route('answers.index')->with('message', 'Deleted successfully.');
+		return response()->json([
+		    'code' => 0,
+        ]);
 	}
 
     public function vote(Answer $answer)

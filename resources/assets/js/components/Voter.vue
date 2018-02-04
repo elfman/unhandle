@@ -1,8 +1,8 @@
 <template>
   <div class="vote">
-    <div class="up" :class="{ active: status === 'upvote' }" @click="upvote"><i class="fa fa-sort-up"></i></div>
+    <div ref="up" class="up" :class="{ active: status === 'upvote' }" @click="upvote"><i class="fa fa-sort-up"></i></div>
     <div class="vote-count">{{ count }}</div>
-    <div class="down" :class="{ active: status === 'downvote' }" @click="downvote"><i class="fa fa-sort-down"></i></div>
+    <div ref="down" class="down" :class="{ active: status === 'downvote' }" @click="downvote"><i class="fa fa-sort-down"></i></div>
   </div>
 </template>
 
@@ -21,10 +21,20 @@
       };
     },
     methods: {
+      showTooltip(elem) {
+        $(elem).tooltip({
+          title: '你不能投票给自己',
+          placement: 'right',
+          trigger: 'manual',
+        }).tooltip('show');
+        setTimeout(() => {
+          $(elem).tooltip('hide');
+        }, 1400);
+      },
       upvote: function () {
         $.post({
           url: `/${this.type}/${this.id}/upvote`,
-          success: function (data) {
+          success: (data) => {
             if (data.code === 0) {
               const vote_change = data.vote_change;
               this.count += vote_change;
@@ -34,13 +44,18 @@
                 this.status = 'notVote';
               }
             }
-          }.bind(this)
+          },
+          error: (xhr) => {
+            if (xhr.status === 403) {
+              this.showTooltip(this.$refs.up);
+            }
+          },
         });
       },
       downvote: function () {
         $.post({
           url: `/${this.type}/${this.id}/downvote`,
-          success: function (data) {
+          success: (data) => {
             if (data.code === 0) {
               const vote_change = data.vote_change;
               this.count += vote_change;
@@ -50,7 +65,12 @@
                 this.status = 'notVote';
               }
             }
-          }.bind(this)
+          },
+          error: (xhr) => {
+            if (xhr.status === 403) {
+              this.showTooltip(this.$refs.down);
+            }
+          },
         });
       }
     }

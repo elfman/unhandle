@@ -71,7 +71,9 @@ class QuestionsController extends Controller
 		$this->authorize('destroy', $question);
 		$question->delete();
 
-		return redirect()->route('questions.index')->with('message', 'Deleted successfully.');
+		return response()->json([
+		    'code' => 0,
+        ]);
 	}
 
     public function uploadImage(Request $request, ImageUploadHandler $uploader)
@@ -98,6 +100,7 @@ class QuestionsController extends Controller
 
     public function vote(Question $question)
     {
+        $this->authorize('vote', $question);
         if (Route::currentRouteName() === 'questions.upvote') {
             $vote_change = $question->upvote();
         } else {

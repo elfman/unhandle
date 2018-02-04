@@ -4,9 +4,9 @@
 
   <div class="container">
     <div class="question">
-      <h5>{{ $question->title }}</h5>
+      <h5>{{ $answer->question->title }}</h5>
       <div class="question-body markdown-body">
-        {!! Parsedown::instance()->text($question->body) !!}
+        {!! Parsedown::instance()->text($answer->question->body) !!}
       </div>
     </div>
 
@@ -14,15 +14,16 @@
     <div class="answer">
       @if ($answer->id)
         <form action="{{ route('answers.update', $answer->id) }}" method="POST">
+          {{ method_field('PUT') }}
       @else
         <form action="{{ route('answers.store') }}" method="POST">
-          <input type="hidden" name="question_id" value="{{ $question->id }}">
+          <input type="hidden" name="question_id" value="{{ $answer->question->id }}">
       @endif
       @include('common.error')
       {{ csrf_field() }}
       <div class="form-group">
         <label for="editor">你的回答：</label>
-        <textarea name="body" id="editor" class="form-control">{{ old('body', $answer->body) }}</textarea>
+        <textarea name="body" id="editor" class="form-control" style="visibility: hidden;">{{ old('body', $answer->body) }}</textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">保存</button>

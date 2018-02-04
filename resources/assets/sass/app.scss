@@ -128,7 +128,6 @@ img[identicon] {
     align-items: center;
     flex-wrap: wrap;
     padding: 5px 6px 7px 7px;
-    float: right;
     width: 13rem;
 
     &.owner {
@@ -163,6 +162,9 @@ img[identicon] {
       flex: 1;
     }
 
+    &:hover .operations a {
+      visibility: visible;
+    }
   }
   .question {
     padding: 10px;
@@ -179,7 +181,7 @@ img[identicon] {
   }
 
   .answer {
-    padding: 10px;
+    padding: 0 10px;
     .vote {
       font-size: 1.6rem;
     }
@@ -194,5 +196,27 @@ img[identicon] {
   .answer-count {
     font-size: 1.8rem;
     margin-left: 1rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .operations {
+    margin-top: 0.15rem;
+
+    a {
+      visibility: hidden;
+      margin-right: 0.8rem;
+      color: #848d95;
+      font-size: 0.8rem;
+
+      &:hover {
+        color: #3b4045;
+      }
+    }
+
   }
 }

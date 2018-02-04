@@ -397,6 +397,34 @@ $('voter').each(function (index, elem) {
   new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({ el: elem });
 });
 
+$('.remove-question').on('click', function () {
+  var id = $(this).parents('.question').data('id');
+  $.ajax({
+    url: '/questions/' + id,
+    method: 'POST',
+    data: { _method: 'DELETE' },
+    success: function success(data) {
+      if (!data.code) {
+        window.location.replace('/');
+      }
+    }
+  });
+});
+
+$('.remove-answer').on('click', function () {
+  var id = $(this).parents('.answer').data('id');
+  $.ajax({
+    url: '/answers/' + id,
+    method: 'POST',
+    data: { _method: 'DELETE' },
+    success: function success(data) {
+      if (!data.code) {
+        $('#answer' + id).remove();
+      }
+    }
+  });
+});
+
 /***/ }),
 
 /***/ 59:
@@ -11975,36 +12003,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    showTooltip: function showTooltip(elem) {
+      $(elem).tooltip({
+        title: '你不能投票给自己',
+        placement: 'right',
+        trigger: 'manual'
+      }).tooltip('show');
+      setTimeout(function () {
+        $(elem).tooltip('hide');
+      }, 1400);
+    },
+
     upvote: function upvote() {
+      var _this = this;
+
       $.post({
         url: '/' + this.type + '/' + this.id + '/upvote',
-        success: function (data) {
+        success: function success(data) {
           if (data.code === 0) {
             var vote_change = data.vote_change;
-            this.count += vote_change;
+            _this.count += vote_change;
             if (vote_change > 0) {
-              this.status = 'upvote';
+              _this.status = 'upvote';
             } else if (vote_change < 0) {
-              this.status = 'notVote';
+              _this.status = 'notVote';
             }
           }
-        }.bind(this)
+        },
+        error: function error(xhr) {
+          if (xhr.status === 403) {
+            _this.showTooltip(_this.$refs.up);
+          }
+        }
       });
     },
     downvote: function downvote() {
+      var _this2 = this;
+
       $.post({
         url: '/' + this.type + '/' + this.id + '/downvote',
-        success: function (data) {
+        success: function success(data) {
           if (data.code === 0) {
             var vote_change = data.vote_change;
-            this.count += vote_change;
+            _this2.count += vote_change;
             if (vote_change < 0) {
-              this.status = 'downvote';
+              _this2.status = 'downvote';
             } else if (vote_change > 0) {
-              this.status = 'notVote';
+              _this2.status = 'notVote';
             }
           }
-        }.bind(this)
+        },
+        error: function error(xhr) {
+          if (xhr.status === 403) {
+            _this2.showTooltip(_this2.$refs.down);
+          }
+        }
       });
     }
   }
@@ -12023,6 +12076,7 @@ var render = function() {
     _c(
       "div",
       {
+        ref: "up",
         staticClass: "up",
         class: { active: _vm.status === "upvote" },
         on: { click: _vm.upvote }
@@ -12035,6 +12089,7 @@ var render = function() {
     _c(
       "div",
       {
+        ref: "down",
         staticClass: "down",
         class: { active: _vm.status === "downvote" },
         on: { click: _vm.downvote }

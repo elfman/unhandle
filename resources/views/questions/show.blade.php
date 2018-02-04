@@ -23,10 +23,20 @@
             {!! clean(Parsedown::instance()->text($question->body)) !!}
           </div>
           <div class="actions">
-            <div class="tags">
-              @foreach($question->tags->pluck('name')->toArray() as $tag)
-                <span class="badge badge-info">{{ $tag }}</span>
-              @endforeach
+            <div>
+              <div class="tags">
+                @foreach($question->tags->pluck('name')->toArray() as $tag)
+                  <span class="badge badge-info">{{ $tag }}</span>
+                @endforeach
+              </div>
+              <div class="operations">
+                @can('update', $question)
+                <a href="{{ route('questions.edit', $question->id) }}">编辑</a>
+                @endcan
+                @can('destroy', $question)
+                <a href="javascript:void(0)" class="remove-question">删除</a>
+                @endcan
+              </div>
             </div>
             <div class="user-info owner">
               <div class="user-action-time">asked {{ $question->created_at }}</div>
@@ -50,7 +60,7 @@
     <div class="answer-list">
       <div class="answer-count">{{ count($question->answers) }} Answers</div>
       @foreach($question->answers as $answer)
-        <div class="answer" data-id="{{ $answer->id }}">
+        <div class="answer" id="answer{{ $answer->id }}" data-id="{{ $answer->id }}">
           <div class="left">
             <voter
                 type="answers"
@@ -63,17 +73,27 @@
             <div class="body markdown-body">
               {!! clean(Parsedown::instance()->text($answer->body)) !!}
             </div>
-            <div class="user-info">
-              <div class="user-action-time">answered {{ $answer->created_at }}</div>
-              <div>
-                <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
-                <div class="user-details">
-                  <div class="name">
-                    <a href="{{ route('users.show', $answer->user->id) }}">
-                      {{ $answer->user->name }}
-                    </a>
+            <div class="actions">
+              <div class="operations">
+                @can('update', $answer)
+                  <a href="{{ route('answers.edit', $answer->id) }}">编辑</a>
+                @endcan
+                @can('destroy', $answer)
+                  <a href="javascript:void(0)" class="remove-answer">删除</a>
+                @endcan
+              </div>
+              <div class="user-info">
+                <div class="user-action-time">answered {{ $answer->created_at }}</div>
+                <div>
+                  <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
+                  <div class="user-details">
+                    <div class="name">
+                      <a href="{{ route('users.show', $answer->user->id) }}">
+                        {{ $answer->user->name }}
+                      </a>
+                    </div>
+                    <div class="score">{{ $answer->user->email }}</div>
                   </div>
-                  <div class="score">{{ $answer->user->email }}</div>
                 </div>
               </div>
             </div>
