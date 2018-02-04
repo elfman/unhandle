@@ -25,7 +25,7 @@ class QuestionsController extends Controller
 
     public function show(Question $question)
     {
-        $question->with(['answer', 'answer.user', 'user']);
+        $question->with(['answers', 'answers.user', 'user', 'comments', 'comments.user', 'answers.comments', 'answers.comments.user']);
         return view('questions.show', compact('question'));
     }
 

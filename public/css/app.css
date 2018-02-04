@@ -13280,6 +13280,10 @@ img[identicon] {
   font-size: 0.8rem;
 }
 
+.questions-show-page #content {
+  width: 80%;
+}
+
 .questions-show-page .user-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13322,27 +13326,23 @@ img[identicon] {
   font-size: 0.8rem;
 }
 
-.questions-show-page .content,
-.questions-show-page .answer {
+.questions-show-page .content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.questions-show-page .content > .left,
-.questions-show-page .answer > .left {
+.questions-show-page .content > .left {
   width: 4rem;
 }
 
-.questions-show-page .content > .right,
-.questions-show-page .answer > .right {
+.questions-show-page .content > .right {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.questions-show-page .content:hover .operations a,
-.questions-show-page .answer:hover .operations a {
+.questions-show-page .content:hover .operations a {
   visibility: visible;
 }
 
@@ -13405,5 +13405,30 @@ img[identicon] {
 
 .questions-show-page .operations a:hover {
   color: #3b4045;
+}
+
+.questions-show-page .comments {
+  font-size: 0.85rem;
+  margin-left: 4rem;
+}
+
+.questions-show-page .comments .comment {
+  min-height: 2rem;
+}
+
+.questions-show-page .comments hr {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.questions-show-page .comments .comment-time {
+  color: #9199a1;
+}
+
+.questions-show-page .comments .comment-remove {
+  cursor: pointer;
+  color: #9199a1;
+  font-size: 1.1em;
+  margin-left: 0.5rem;
 }
 

@@ -122,6 +122,9 @@ img[identicon] {
 }
 
 .questions-show-page {
+  #content {
+    width: 80%;
+  }
 
   .user-info {
     display: flex;
@@ -153,7 +156,7 @@ img[identicon] {
       font-size: 0.8rem;
     }
   }
-  .content, .answer {
+  .content {
     display: flex;
     > .left {
       width: 4rem;
@@ -217,6 +220,31 @@ img[identicon] {
         color: #3b4045;
       }
     }
-
   }
+
+  .comments {
+    font-size: 0.85rem;
+    margin-left: 4rem;
+
+    .comment {
+      min-height: 2rem;
+    }
+
+    hr {
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .comment-time {
+      color: #9199a1;
+    }
+
+    .comment-remove {
+      cursor: pointer;
+      color: #9199a1;
+      font-size: 1.1em;
+      margin-left: 0.5rem;
+    }
+  }
+
 }

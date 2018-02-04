@@ -26,4 +26,9 @@ class Answer extends Model
     {
         return $this->morphMany(Vote::class, 'votable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

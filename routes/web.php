@@ -28,3 +28,6 @@ Route::post('/questions/{question}/upvote', 'QuestionsController@vote')->name('q
 Route::post('/questions/{question}/downvote', 'QuestionsController@vote')->name('questions.downvote');
 Route::post('/answers/{answer}/upvote', 'AnswersController@vote')->name('answers.upvote');
 Route::post('/answers/{answer}/downvote', 'AnswersController@vote')->name('answers.downvote');
+
+Route::resource('comments', 'CommentsController', ['only' => ['store', 'update', 'destroy']]);
+Route::post('/comments/reply', 'CommentsController@store')->name('comments.reply');

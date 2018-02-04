@@ -55,48 +55,86 @@
           </div>
         </div>
       </div>
+      <div class="comments">
+        <div class="list">
+          @foreach($question->comments as $comment)
+            <div class="comment" id="comment{{ $comment->id }}">
+              <hr>
+              <span class="comment-text">{{ $comment->body }}</span>
+              -
+              <a class="comment-user" href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+              <span class="comment-time">{{ $comment->created_at->format('y-m-d \a\t h:i') }}</span>
+            </div>
+          @endforeach
+        </div>
+        @can('comment', $question)
+          <comment-editor type="question" :id="{{ $question->id }}"></comment-editor>
+        @endcan
+      </div>
     </div>
     <hr>
     <div class="answer-list">
       <div class="answer-count">{{ count($question->answers) }} Answers</div>
       @foreach($question->answers as $answer)
         <div class="answer" id="answer{{ $answer->id }}" data-id="{{ $answer->id }}">
-          <div class="left">
-            <voter
-                type="answers"
-                :id="{{ $answer->id }}"
-                :vote-count="{{ $answer->vote_count }}"
-                vote-status="{{ $answer->voted() }}"
-            ></voter>
-          </div>
-          <div class="right">
-            <div class="body markdown-body">
-              {!! clean(Parsedown::instance()->text($answer->body)) !!}
+          <div class="content">
+            <div class="left">
+              <voter
+                  type="answers"
+                  :id="{{ $answer->id }}"
+                  :vote-count="{{ $answer->vote_count }}"
+                  vote-status="{{ $answer->voted() }}"
+              ></voter>
             </div>
-            <div class="actions">
-              <div class="operations">
-                @can('update', $answer)
-                  <a href="{{ route('answers.edit', $answer->id) }}">编辑</a>
-                @endcan
-                @can('destroy', $answer)
-                  <a href="javascript:void(0)" class="remove-answer">删除</a>
-                @endcan
+            <div class="right">
+              <div class="body markdown-body">
+                {!! clean(Parsedown::instance()->text($answer->body)) !!}
               </div>
-              <div class="user-info">
-                <div class="user-action-time">answered {{ $answer->created_at }}</div>
-                <div>
-                  <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
-                  <div class="user-details">
-                    <div class="name">
-                      <a href="{{ route('users.show', $answer->user->id) }}">
-                        {{ $answer->user->name }}
-                      </a>
+              <div class="actions">
+                <div class="operations">
+                  @can('update', $answer)
+                    <a href="{{ route('answers.edit', $answer->id) }}">编辑</a>
+                  @endcan
+                  @can('destroy', $answer)
+                    <a href="javascript:void(0)" class="remove-answer">删除</a>
+                  @endcan
+                </div>
+                <div class="user-info">
+                  <div class="user-action-time">answered {{ $answer->created_at }}</div>
+                  <div>
+                    <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
+                    <div class="user-details">
+                      <div class="name">
+                        <a href="{{ route('users.show', $answer->user->id) }}">
+                          {{ $answer->user->name }}
+                        </a>
+                      </div>
+                      <div class="score">{{ $answer->user->email }}</div>
                     </div>
-                    <div class="score">{{ $answer->user->email }}</div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="comments">
+            <div class="list">
+              @foreach($answer->comments as $comment)
+                <div class="comment" id="comment{{ $comment->id }}">
+                  <hr>
+                  <span class="comment-text">{{ $comment->body }}</span>
+                  -
+                  <a class="comment-user" href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+                  <span class="comment-time">{{ $comment->created_at->format('y-m-d \a\t h:i') }}</span>
+
+                  @can('destroy', $comment)
+                    <span class="fa fa-trash comment-remove" data-id="{{ $comment->id }}"></span>
+                  @endcan
+                </div>
+              @endforeach
+            </div>
+            @can('comment', $question)
+              <comment-editor type="answer" :id="{{ $answer->id }}"></comment-editor>
+            @endcan
           </div>
         </div>
         <hr>

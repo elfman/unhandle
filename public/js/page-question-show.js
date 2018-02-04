@@ -384,6 +384,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Voter_vue__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Voter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Voter_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_CommentEditor_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_CommentEditor_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_CommentEditor_vue__);
 /**
  * Created by luoxiongwen on 2018/2/3.
  */
@@ -391,9 +393,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('voter', __WEBPACK_IMPORTED_MODULE_1__components_Voter_vue___default.a);
 
-$('voter').each(function (index, elem) {
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('voter', __WEBPACK_IMPORTED_MODULE_1__components_Voter_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('comment-editor', __WEBPACK_IMPORTED_MODULE_2__components_CommentEditor_vue___default.a);
+
+$('voter, comment-editor').each(function (index, elem) {
   new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({ el: elem });
 });
 
@@ -420,6 +424,20 @@ $('.remove-answer').on('click', function () {
     success: function success(data) {
       if (!data.code) {
         $('#answer' + id).remove();
+      }
+    }
+  });
+});
+
+$('.comment-remove').on('click', function () {
+  var id = $(this).data('id');
+  $.ajax({
+    url: '/comments/' + id,
+    method: 'POST',
+    data: { _method: 'DELETE' },
+    success: function success(data) {
+      if (data.code === 0) {
+        $('#comment' + id).remove();
       }
     }
   });
@@ -12105,6 +12123,235 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-54acef21", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(80)
+}
+var normalizeComponent = __webpack_require__(67)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-21d77a05"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CommentEditor.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-21d77a05", Component.options)
+  } else {
+    hotAPI.reload("data-v-21d77a05", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(81);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(65)("582ea968", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-21d77a05\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CommentEditor.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-21d77a05\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CommentEditor.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(52)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.add-comment[data-v-21d77a05] {\n  margin-top: 0.4rem;\n  font-size: 0.85rem;\n}\n.add-comment hr[data-v-21d77a05] {\n    margin-bottom: 0.5rem;\n}\n.add-comment .add-comment-area[data-v-21d77a05] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.add-comment .add-comment-area textarea[data-v-21d77a05] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n}\n.add-comment .add-comment-area button[data-v-21d77a05] {\n      width: 7rem;\n      height: 2.3rem;\n      margin: 0 0.5em;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    type: String,
+    id: Number
+  },
+  data: function data() {
+    return {
+      editing: false,
+      commiting: false,
+      text: null
+    };
+  },
+
+  methods: {
+    commit: function commit() {
+      var _this = this;
+
+      if (this.commiting) return;
+
+      this.commiting = true;
+      $.post({
+        url: '/comments',
+        data: {
+          id: this.id,
+          type: this.type,
+          body: this.text
+        },
+        success: function success(data) {
+          _this.commiting = false;
+          if (data.code === 0) {
+            _this.text = null;
+            _this.editing = false;
+            var comment = data.comment;
+
+            $(_this.$refs.wrapper).parents('.comments').find('>.list').append('\n              <div class="comment" id="comment' + comment.id + '">\n                <hr>\n                <span class="comment-text">' + comment.body + '</span>\n                -\n                <a class="comment-user" href="/users/' + comment.user.id + '">' + comment.user.name + '</a>\n                <span class="comment-time">' + comment.time + '</span>\n              </div>\n            ');
+          }
+        }
+      });
+    },
+    addComment: function addComment() {}
+  }
+});
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { ref: "wrapper", staticClass: "add-comment" }, [
+    _c("hr"),
+    _vm._v(" "),
+    !_vm.editing
+      ? _c(
+          "a",
+          {
+            staticClass: "add-comment-show",
+            attrs: { href: "javascript:void(0)" },
+            on: {
+              click: function($event) {
+                _vm.editing = true
+              }
+            }
+          },
+          [_vm._v("添加评论")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editing
+      ? _c("div", { staticClass: "add-comment-area" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.text,
+                expression: "text"
+              }
+            ],
+            attrs: { rows: "4", placeholder: "请输入评论，至少15个字符~~" },
+            domProps: { value: _vm.text },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.text = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary add-comment-button",
+              on: { click: _vm.commit }
+            },
+            [_vm._v("添加评论")]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-21d77a05", module.exports)
   }
 }
 

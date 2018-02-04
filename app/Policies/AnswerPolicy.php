@@ -21,4 +21,9 @@ class AnswerPolicy extends Policy
     {
         return $answer->user_id !== $user->id;
     }
+
+    public function comment(User $user, Answer $answer)
+    {
+        return true;
+    }
 }

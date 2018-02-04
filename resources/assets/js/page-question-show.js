@@ -4,10 +4,12 @@
 import Vue from 'vue';
 
 import Voter from './components/Voter.vue';
+import CommentEditor from './components/CommentEditor.vue';
 
 Vue.component('voter', Voter);
+Vue.component('comment-editor', CommentEditor);
 
-$('voter').each(function (index, elem) {
+$('voter, comment-editor').each(function (index, elem) {
   new Vue({ el: elem });
 });
 
@@ -38,3 +40,17 @@ $('.remove-answer').on('click', function () {
     }
   });
 });
+
+$('.comment-remove').on('click', function () {
+  const id = $(this).data('id');
+  $.ajax({
+    url: '/comments/' + id,
+    method: 'POST',
+    data: { _method: 'DELETE' },
+    success: function (data) {
+      if (data.code === 0) {
+        $('#comment' + id).remove();
+      }
+    }
+  })
+})
