@@ -80,11 +80,15 @@ img[identicon] {
       }
     }
     .view-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: rgb(36, 39, 41);
       margin-top: 8px;
 
       > span {
         font-size: 1.3em;
+        margin-right: 0.3em;
       }
     }
     .title {

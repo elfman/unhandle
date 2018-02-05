@@ -13213,6 +13213,15 @@ img[identicon] {
 .questions-index-page .question .view-count,
 .root-page .question .view-count,
 .questions-my-page .question .view-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   color: #242729;
   margin-top: 8px;
 }
@@ -13221,6 +13230,7 @@ img[identicon] {
 .root-page .question .view-count > span,
 .questions-my-page .question .view-count > span {
   font-size: 1.3em;
+  margin-right: 0.3em;
 }
 
 .questions-index-page .question .title,

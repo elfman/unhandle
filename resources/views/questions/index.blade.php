@@ -15,7 +15,7 @@
               <span>{{ $question->answer_count }}</span> answers
             </div>
             <div class="view-count">
-              <span>{{ $question->view_count }}</span> views
+              <span>{{ $question->latestViewCount() }}</span> views
             </div>
           </div>
           <div class="right">

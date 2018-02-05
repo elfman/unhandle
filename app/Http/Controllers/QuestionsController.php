@@ -26,6 +26,7 @@ class QuestionsController extends Controller
     public function show(Question $question)
     {
         $question->with(['answers', 'answers.user', 'user', 'comments', 'comments.user', 'answers.comments', 'answers.comments.user']);
+        $question->increaseViewCount();
         return view('questions.show', compact('question'));
     }
 

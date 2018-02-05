@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ViewCountHelper;
 use App\Models\Traits\VoteHelper;
 use Spatie\Tags\HasTags;
 
@@ -9,6 +10,7 @@ class Question extends Model
 {
     use HasTags;
     use VoteHelper;
+    use ViewCountHelper;
 
     protected $fillable = ['title', 'brief', 'body', 'user_id', 'vote_count', 'answer_count', 'view_count', 'accept_answer', 'is'];
 
