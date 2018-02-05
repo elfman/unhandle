@@ -18,8 +18,13 @@ class AnswersController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function create(Question $question, Answer $answer)
+	public function create(Answer $answer, Request $request)
 	{
+	    $question_id = $request->query('question_id');
+	    $question = Question::find($question_id);
+	    if (!$question) {
+	        return 'missing query: question_id';
+        }
 		return view('answers.create_and_edit', compact('question', 'answer'));
 	}
 
@@ -34,7 +39,8 @@ class AnswersController extends Controller
 	public function edit(Answer $answer)
 	{
         $this->authorize('update', $answer);
-		return view('answers.create_and_edit', compact('answer'));
+        $question = $answer->question;
+		return view('answers.create_and_edit', compact('question', 'answer'));
 	}
 
 	public function update(AnswerRequest $request, Answer $answer)

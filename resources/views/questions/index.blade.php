@@ -25,12 +25,12 @@
               </a>
             </div>
             <div class="brief">{{ $question->brief }}</div>
-            {{--<div class="tags">--}}
-            {{--@foreach($question->tags as $tag)--}}
-            {{--<span class="badge">{{ $tag->name }}</span>--}}
-            {{--@endforeach--}}
-            {{--</div>--}}
             <div class="actions">
+              <div class="tags">
+                @foreach($question->tags as $tag)
+                  <span class="badge badge-info">{{ $tag->name }}</span>
+                @endforeach
+              </div>
               <div class="user-info owner">
                 <div class="user-action-time">asked {{ $question->created_at }}</div>
                 <div>

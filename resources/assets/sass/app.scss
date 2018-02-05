@@ -67,7 +67,7 @@ img[identicon] {
 
       .actions {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
       }
     }
     .vote-count, .answer-count {
@@ -93,37 +93,71 @@ img[identicon] {
     .brief {
       color: rgb(59, 64, 69);
     }
-    .user-info {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 5px 6px 7px 7px;
-      float: right;
-      width: 13rem;
+    //.user-info {
+    //  display: flex;
+    //  align-items: center;
+    //  flex-wrap: wrap;
+    //  padding: 5px 6px 7px 7px;
+    //  float: right;
+    //  width: 13rem;
+    //
+    //  &.owner {
+    //    background-color: rgb(224, 234, 241);
+    //  }
+    //
+    //  >div:nth-child(2) {
+    //    margin-top: 4px;
+    //    display: flex;
+    //    align-items: center;
+    //  }
+    //
+    //  .user-action-time {
+    //    font-size: 0.8rem;
+    //    color: rgb(132, 141, 149);
+    //  }
+    //  .avatar {
+    //    width: 32px;
+    //    height: 32px;
+    //  }
+    //  .user-details {
+    //    margin-left: 10px;
+    //    font-size: 0.8rem;
+    //  }
+    //}
+  }
+}
 
-      &.owner {
-        background-color: rgb(224, 234, 241);
-      }
+.user-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px 6px 7px 7px;
+  width: 13rem;
 
-      >div:nth-child(2) {
-        margin-top: 4px;
-        display: flex;
-        align-items: center;
-      }
+  &.owner {
+    background-color: rgb(224, 234, 241);
+  }
 
-      .user-action-time {
-        font-size: 0.8rem;
-        color: rgb(132, 141, 149);
-      }
-      .avatar {
-        width: 32px;
-        height: 32px;
-      }
-      .user-details {
-        margin-left: 10px;
-        font-size: 0.8rem;
-      }
-    }
+  >div:nth-child(2) {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .user-action-time {
+    font-size: 0.8rem;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+  }
+  .name {
+    white-space: nowrap;
+  }
+  .user-details {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 0.8rem;
   }
 }
 
@@ -132,36 +166,6 @@ img[identicon] {
     width: 80%;
   }
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 5px 6px 7px 7px;
-    width: 13rem;
-
-    &.owner {
-      background-color: rgb(224, 234, 241);
-    }
-
-    >div:nth-child(2) {
-      margin-top: 4px;
-      display: flex;
-      align-items: center;
-    }
-
-    .user-action-time {
-      font-size: 0.8rem;
-    }
-    img {
-      width: 32px;
-      height: 32px;
-    }
-    .user-details {
-      margin-left: 10px;
-      display: inline-block;
-      font-size: 0.8rem;
-    }
-  }
   .content {
     display: flex;
     > .left {

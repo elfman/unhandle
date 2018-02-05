@@ -4,9 +4,9 @@
 
   <div class="container">
     <div class="question">
-      <h5>{{ $answer->question->title }}</h5>
+      <h5>{{ $question->title }}</h5>
       <div class="question-body markdown-body">
-        {!! Parsedown::instance()->text($answer->question->body) !!}
+        {!! Parsedown::instance()->text($question->body) !!}
       </div>
     </div>
 
@@ -17,7 +17,7 @@
           {{ method_field('PUT') }}
       @else
         <form action="{{ route('answers.store') }}" method="POST">
-          <input type="hidden" name="question_id" value="{{ $answer->question->id }}">
+          <input type="hidden" name="question_id" value="{{ $question->id }}">
       @endif
       @include('common.error')
       {{ csrf_field() }}

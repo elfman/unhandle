@@ -25,8 +25,8 @@
           <div class="actions">
             <div>
               <div class="tags">
-                @foreach($question->tags->pluck('name')->toArray() as $tag)
-                  <span class="badge badge-info">{{ $tag }}</span>
+                @foreach($question->tags as $tag)
+                  <span class="badge badge-info">{{ $tag->name }}</span>
                 @endforeach
               </div>
               <div class="operations">
@@ -143,7 +143,7 @@
     </div>
 
     <div class="add-answer">
-      <a class="btn btn-primary" role="button" href="{{ route('answers.create', $question->id) }}">
+      <a class="btn btn-primary" role="button" href="{{ route('answers.create', ['question_id' => $question->id]) }}">
         回答问题
       </a>
     </div>
@@ -151,12 +151,10 @@
 @endsection
 
 @section('script')
-  {{--<script src="//cdn.bootcss.com/vue/2.5.13/vue.js"></script>--}}
   <script>
     window.pageData = {
       acceptedAnswer: {{ $question->accept_answer ?: 'null' }},
     };
-    {{--Vue.prototype.$acceptedAnswer = {{ $question->accept_answer ?: null }};--}}
   </script>
   <script src="/js/page-question-show.js"></script>
 @endsection
