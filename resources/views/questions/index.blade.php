@@ -41,7 +41,7 @@
                         {{ $question->user->name }}
                       </a>
                     </div>
-                    <div class="score">{{ $question->user->email }}</div>
+                    <div class="reputation">{{ $question->user->reputation }} 声望</div>
                   </div>
                 </div>
               </div>

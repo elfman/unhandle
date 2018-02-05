@@ -24,11 +24,13 @@
               提问题
             </a>
           </li>
+          <li class="reputation">
+            {{ Auth::user()->reputation }} 声望
+          </li>
           <li class="nav-item dropdown" style="cursor: pointer;">
             <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <span>
-                <img {{ avatarAttr() }}
-                     alt="{{ Auth::user()->name }}" class="avatar">
+                <img {{ avatarAttr() }} class="avatar">
                 <span>{{ Auth::user()->name }}</span>
               </span>
             </div>

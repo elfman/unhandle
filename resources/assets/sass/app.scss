@@ -33,7 +33,13 @@ img[identicon] {
   }
 
   .button-ask {
-    margin-right: 16px;
+    margin-right: 1rem;
+  }
+
+  .reputation {
+    display: flex;
+    align-items: center;
+    margin-right: 0.7rem;
   }
 }
 
@@ -146,7 +152,7 @@ img[identicon] {
     .user-action-time {
       font-size: 0.8rem;
     }
-    .avatar {
+    img {
       width: 32px;
       height: 32px;
     }

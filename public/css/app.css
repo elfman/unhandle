@@ -13137,7 +13137,17 @@ img[identicon] {
 }
 
 .navbar .button-ask {
-  margin-right: 16px;
+  margin-right: 1rem;
+}
+
+.navbar .reputation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 0.7rem;
 }
 
 .users-show-page .info-header {
@@ -13315,7 +13325,7 @@ img[identicon] {
   font-size: 0.8rem;
 }
 
-.questions-show-page .user-info .avatar {
+.questions-show-page .user-info img {
   width: 32px;
   height: 32px;
 }
