@@ -10,7 +10,7 @@ class Answer extends Model
     use SoftDeletes;
     use VoteHelper;
 
-    protected $fillable = ['user_id', 'question_id', 'vote_count', 'body', 'accepted', 'is'];
+    protected $fillable = ['user_id', 'question_id', 'vote_count', 'body', 'is_accepted'];
 
     public function user()
     {

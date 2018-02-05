@@ -11,12 +11,12 @@ class CreateQuestionsTable extends Migration
 	{
 		Schema::create('questions', function(Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('title')->index();
             $table->text('brief');
             $table->longText('body');
-            $table->unsignedInteger('user_id');
             $table->integer('vote_count')->default(0);
-            $table->unsignedInteger('solved_by')->nullable();
+            $table->unsignedInteger('accept_answer')->nullable();
             $table->unsignedInteger('view_count')->default(0);
             $table->unsignedInteger('answer_count')->default(0);
 

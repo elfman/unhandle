@@ -71,4 +71,50 @@ class AnswersController extends Controller
         ]);
 	}
 
+    public function accept(Answer $answer)
+    {
+        $this->authorize('accept', $answer);
+
+        $question = $answer->question;
+        if ($question->accept_answer !== null) {
+            if ($question->accept_answer === $answer) {
+                return response()->json([
+                    'code' => 0,
+                    'msg' => 'this answer is already accepted',
+                ]);
+            }
+            Answer::where('id', $question->accept_answer)->update(['is_accepted' => false]);
+        }
+        $answer->is_accepted = true;
+        $answer->question->accept_answer = $answer->id;
+
+        $answer->save();
+        $answer->question->save();
+
+        return response()->json([
+            'code' => 0,
+        ]);
+	}
+
+    public function cancelAccept(Answer $answer)
+    {
+        if (!$answer->is_accepted) {
+            return response()->json([
+                'code' => 1,
+                'msg' => 'this answer is not accepted'
+            ]);
+        }
+
+        $this->authorize('accept', $answer);
+
+        $question = $answer->question;
+        $question->accept_answer = null;
+        $answer->is_accepted = false;
+        $question->save();
+        $answer->save();
+
+        return response()->json([
+            'code' => 0,
+        ]);
+	}
 }

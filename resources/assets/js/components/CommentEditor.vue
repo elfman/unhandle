@@ -54,9 +54,6 @@
           }
         });
       },
-      addComment: function () {
-
-      }
     }
   }
 </script>

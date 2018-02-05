@@ -85,6 +85,7 @@
                   :vote-count="{{ $answer->vote_count }}"
                   vote-status="{{ $answer->voted() }}"
               ></voter>
+              <answer-acceptor :id="{{ $answer->id }}" :can-accept="{{ (Auth::check() and Auth::user()->can('accept', $answer)) ? 'true' : 'false' }}"></answer-acceptor>
             </div>
             <div class="right">
               <div class="body markdown-body">
@@ -150,5 +151,12 @@
 @endsection
 
 @section('script')
+  {{--<script src="//cdn.bootcss.com/vue/2.5.13/vue.js"></script>--}}
+  <script>
+    window.pageData = {
+      acceptedAnswer: {{ $question->accept_answer ?: 'null' }},
+    };
+    {{--Vue.prototype.$acceptedAnswer = {{ $question->accept_answer ?: null }};--}}
+  </script>
   <script src="/js/page-question-show.js"></script>
 @endsection

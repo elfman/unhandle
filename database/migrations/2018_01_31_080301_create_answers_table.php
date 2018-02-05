@@ -13,7 +13,7 @@ class CreateAnswersTable extends Migration
             $table->unsignedInteger('question_id')->index();
             $table->integer('vote_count')->default(0);
             $table->longText('body');
-            $table->boolean('accepted')->default(false);
+            $table->boolean('is_accepted')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

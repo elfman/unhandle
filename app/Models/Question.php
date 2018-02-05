@@ -10,7 +10,7 @@ class Question extends Model
     use HasTags;
     use VoteHelper;
 
-    protected $fillable = ['title', 'brief', 'body', 'user_id', 'vote_count', 'answer_count', 'view_count', 'solved_by', 'is'];
+    protected $fillable = ['title', 'brief', 'body', 'user_id', 'vote_count', 'answer_count', 'view_count', 'accept_answer', 'is'];
 
     public function user()
     {
