@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AcceptAnswer;
 use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -97,6 +98,8 @@ class AnswersController extends Controller
         $answer->save();
         $answer->question->save();
 
+        event(new AcceptAnswer($answer, 'accept'));
+
         return response()->json([
             'code' => 0,
         ]);
@@ -118,6 +121,8 @@ class AnswersController extends Controller
         $answer->is_accepted = false;
         $question->save();
         $answer->save();
+
+        event(new AcceptAnswer($answer, 'cancel'));
 
         return response()->json([
             'code' => 0,

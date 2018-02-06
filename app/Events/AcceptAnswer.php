@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Vote;
+use App\Models\Answer;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -11,16 +11,16 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserVote
+class AcceptAnswer
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $vote;
+    public $answer;
     public $type;
 
-    public function __construct(Vote $vote, $type)
+    public function __construct(Answer $answer, $type)
     {
-        $this->vote = $vote;
+        $this->answer = $answer;
         $this->type = $type;
     }
 
