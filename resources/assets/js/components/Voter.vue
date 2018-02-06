@@ -1,8 +1,12 @@
 <template>
   <div class="vote">
-    <div ref="up" class="up" :class="{ active: status === 'upvote' }" @click="upvote"><i class="fa fa-sort-up"></i></div>
+    <div ref="up" class="up" :class="{ active: status === 'upvote' }" @click="upvote">
+      <div class="triangle"></div>
+    </div>
     <div class="vote-count">{{ count }}</div>
-    <div ref="down" class="down" :class="{ active: status === 'downvote' }" @click="downvote"><i class="fa fa-sort-down"></i></div>
+    <div ref="down" class="down" :class="{ active: status === 'downvote' }" @click="downvote">
+      <div class="triangle reverse"></div>
+    </div>
   </div>
 </template>
 
@@ -93,9 +97,25 @@
       line-height: 1rem;
       height: 1rem;
       cursor: pointer;
+      position: relative;
+      left: 1.38rem;
+      top: 0.78rem;
 
-      &.active i::before{
-        color: #007bff;
+      &.active .triangle {
+        border-color: #007bff transparent transparent #007bff;
+      }
+
+      .triangle {
+        width: 0;
+        transform: rotate(45deg);
+        border-width: 0.6rem;
+        border-color: #6a737c transparent transparent #6a737c;
+        border-style: solid;
+        border-radius: 4px;
+
+        &.reverse {
+          transform: rotate(-135deg);
+        }
       }
     }
   }

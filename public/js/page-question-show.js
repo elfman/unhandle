@@ -11659,7 +11659,7 @@ exports = module.exports = __webpack_require__(52)(false);
 
 
 // module
-exports.push([module.i, "\n.vote[data-v-54acef21] {\n  text-align: center;\n  color: #6a737c;\n  font-size: 1.8rem;\n  line-height: 1;\n}\n.vote .vote-count[data-v-54acef21] {\n    position: relative;\n    top: 0.8rem;\n}\n.vote .up[data-v-54acef21], .vote .down[data-v-54acef21] {\n    font-size: 3rem;\n    line-height: 1rem;\n    height: 1rem;\n    cursor: pointer;\n}\n.vote .up.active i[data-v-54acef21]::before, .vote .down.active i[data-v-54acef21]::before {\n      color: #007bff;\n}\n", ""]);
+exports.push([module.i, "\n.vote[data-v-54acef21] {\n  text-align: center;\n  color: #6a737c;\n  font-size: 1.8rem;\n  line-height: 1;\n}\n.vote .vote-count[data-v-54acef21] {\n    position: relative;\n    top: 0.8rem;\n}\n.vote .up[data-v-54acef21], .vote .down[data-v-54acef21] {\n    font-size: 3rem;\n    line-height: 1rem;\n    height: 1rem;\n    cursor: pointer;\n    position: relative;\n    left: 1.38rem;\n    top: 0.78rem;\n}\n.vote .up.active .triangle[data-v-54acef21], .vote .down.active .triangle[data-v-54acef21] {\n      border-color: #007bff transparent transparent #007bff;\n}\n.vote .up .triangle[data-v-54acef21], .vote .down .triangle[data-v-54acef21] {\n      width: 0;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg);\n      border-width: 0.6rem;\n      border-color: #6a737c transparent transparent #6a737c;\n      border-style: solid;\n      border-radius: 4px;\n}\n.vote .up .triangle.reverse[data-v-54acef21], .vote .down .triangle.reverse[data-v-54acef21] {\n        -webkit-transform: rotate(-135deg);\n                transform: rotate(-135deg);\n}\n", ""]);
 
 // exports
 
@@ -12048,6 +12048,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -12141,7 +12145,7 @@ var render = function() {
         class: { active: _vm.status === "upvote" },
         on: { click: _vm.upvote }
       },
-      [_c("i", { staticClass: "fa fa-sort-up" })]
+      [_c("div", { staticClass: "triangle" })]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "vote-count" }, [_vm._v(_vm._s(_vm.count))]),
@@ -12154,7 +12158,7 @@ var render = function() {
         class: { active: _vm.status === "downvote" },
         on: { click: _vm.downvote }
       },
-      [_c("i", { staticClass: "fa fa-sort-down" })]
+      [_c("div", { staticClass: "triangle reverse" })]
     )
   ])
 }
