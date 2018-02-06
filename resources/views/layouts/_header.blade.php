@@ -27,6 +27,15 @@
           <li class="reputation">
             {{ Auth::user()->reputation }} 声望
           </li>
+          <li class="notification">
+            <a href="{{ route('notifications.index') }}" class="notification-badge">
+              @if(Auth::user()->notification_count > 0)
+                <span class="badge badge-pill badge-danger }}">{{ Auth::user()->notification_count }}</span>
+              @else
+                <span class="fa fa-bell"></span>
+              @endif
+            </a>
+          </li>
           <li class="nav-item dropdown" style="cursor: pointer;">
             <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <span>

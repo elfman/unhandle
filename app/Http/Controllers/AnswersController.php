@@ -16,7 +16,7 @@ class AnswersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth');
     }
 
 	public function create(Answer $answer, Request $request)
@@ -34,7 +34,9 @@ class AnswersController extends Controller
 	    $data = $request->only(['question_id', 'body']);
 	    $data['user_id'] = Auth::id();
 		$answer = Answer::create($data);
-		return redirect()->route('questions.show', ['question' => $request->question_id, 'answer_id' => $answer->id])->with('message', 'Created successfully.');
+
+        $url = route('questions.show', $answer->question_id) . '#answer' . $answer->id;
+		return Redirect::to($url) ->with('message', '成功提交回答');
 	}
 
 	public function edit(Answer $answer)
@@ -49,7 +51,7 @@ class AnswersController extends Controller
 		$this->authorize('update', $answer);
 		$answer->update($request->all());
 
-		$url = route('questions.show', $answer->question->id) . '#answer' . $answer->id;
+		$url = route('questions.show', $answer->question_id) . '#answer' . $answer->id;
 		return Redirect::to($url)->with('message', '修改成功');
 	}
 

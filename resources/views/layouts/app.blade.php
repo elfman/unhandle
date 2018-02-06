@@ -28,6 +28,10 @@
   @yield('content')
 
   @include('layouts._footer')
+
+  @if (config('app.debug'))
+    @include('sudosu::user-selector')
+  @endif
 </div>
 
 <!-- Scripts -->

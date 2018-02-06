@@ -35,3 +35,5 @@ Route::post('/answers/{answer}/downvote', 'AnswersController@vote')->name('answe
 
 Route::resource('comments', 'CommentsController', ['only' => ['store', 'update', 'destroy']]);
 Route::post('/comments/reply', 'CommentsController@store')->name('comments.reply');
+
+Route::get('/notifications', 'NotificationsController@index')->name('notifications.index');

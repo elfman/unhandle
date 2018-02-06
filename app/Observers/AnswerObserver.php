@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Answer;
+use App\Notifications\AnswerCreated;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -16,7 +17,11 @@ class AnswerObserver
 
     public function created(Answer $answer)
     {
-        $answer->question->increment('answer_count');
+        $question = $answer->question;
+        $question->increment('answer_count');
+        if ($answer->user_id !== $question->user_id) {
+            $question->user->notify(new AnswerCreated($answer));
+        }
     }
 
     public function updating(Answer $answer)

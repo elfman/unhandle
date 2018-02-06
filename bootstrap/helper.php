@@ -14,7 +14,10 @@ function route_class()
 function avatarAttr($user = null)
 {
     $user = $user ?: Auth::user();
-    return $user->avatar === null ? "identicon=$user->email" :"src=$user->avatar";
+    if (is_array($user)) {
+        $user = (object)$user;
+    }
+    return $user->avatar === null ? "identicon=$user->email" : "src=$user->avatar";
 }
 
 function getTextBrief($text)

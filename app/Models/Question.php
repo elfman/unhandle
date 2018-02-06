@@ -38,4 +38,9 @@ class Question extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function link($extra)
+    {
+        return route('questions.show', $this->id) . $extra;
+    }
 }

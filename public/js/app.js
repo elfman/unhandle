@@ -13953,6 +13953,12 @@ $(function ($) {
   });
 });
 
+$('.mark-all-read').on('click', function () {
+  $.ajax({
+    url: ''
+  });
+});
+
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {

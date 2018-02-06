@@ -33,3 +33,9 @@ $(function ($) {
     $elem.show();
   });
 });
+
+$('.mark-all-read').on('click', function () {
+  $.ajax({
+    url: ''
+  })
+})

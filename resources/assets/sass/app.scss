@@ -41,6 +41,27 @@ img[identicon] {
     align-items: center;
     margin-right: 0.7rem;
   }
+
+  .notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 75%;
+
+    .fa-bell {
+      font-size: 1.1rem;
+      color: #9199a1;
+    }
+
+    .badge {
+      font-size: 100%;
+    }
+  }
+
+  .dropdown {
+    top: 4px;
+  }
 }
 
 .login-page, .register-page {
@@ -260,5 +281,13 @@ img[identicon] {
       margin-left: 0.5rem;
     }
   }
+}
 
+.notifications-index-page {
+  .answer-created {
+    .avatar {
+      width: 64px;
+      height: 64px;
+    }
+  }
 }

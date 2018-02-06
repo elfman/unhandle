@@ -13150,6 +13150,33 @@ img[identicon] {
   margin-right: 0.7rem;
 }
 
+.navbar .notification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 10px;
+  font-size: 75%;
+}
+
+.navbar .notification .fa-bell {
+  font-size: 1.1rem;
+  color: #9199a1;
+}
+
+.navbar .notification .badge {
+  font-size: 100%;
+}
+
+.navbar .dropdown {
+  top: 4px;
+}
+
 .users-show-page .info-header {
   font-size: 1.5rem;
 }
@@ -13399,5 +13426,10 @@ img[identicon] {
   color: #9199a1;
   font-size: 1.1em;
   margin-left: 0.5rem;
+}
+
+.notifications-index-page .answer-created .avatar {
+  width: 64px;
+  height: 64px;
 }
 
