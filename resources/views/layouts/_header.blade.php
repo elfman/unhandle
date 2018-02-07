@@ -7,7 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item {{ active_class(Route::currentRouteName() === 'root') }}">
           <a href="/" class="nav-link">首页</a>
         </li>
         <li class="nav-item">

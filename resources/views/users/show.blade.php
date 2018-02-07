@@ -56,7 +56,7 @@
                   @foreach($questions as $question)
                   <li class="list-group-item">
                     <span class="vote-count">{{ $question->vote_count }} 票</span>
-                    <span class="title">{{ $question->title }}</span>
+                    <a href="{{ $question->link() }}" class="title">{{ $question->title }}</a>
                     <span class="time pull-right">{{ $question->created_at->format('y年m月d日 h:i') }}</span>
                   </li>
                   @endforeach
@@ -74,7 +74,7 @@
                     @foreach($answers as $answer)
                       <li class="list-group-item">
                         <span class="vote-count">{{ $answer->vote_count }} 票</span>
-                        <span class="title">{{ $answer->question->title }}</span>
+                        <a href="{{ $answer->question->link() }}" class="title">{{ $answer->question->title }}</a>
                         <span class="time pull-right">{{ $answer->created_at->format('y年m月d日 h:i') }}</span>
                       </li>
                     @endforeach
