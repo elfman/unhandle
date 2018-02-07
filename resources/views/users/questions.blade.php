@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('users.profile')
 
-@section('title', '所有问题')
-
-@section('content')
-  <div class="container">
+@section('profile-content')
+  <div class="card">
+    <div class="card-header">
+      {{ heOrMe($user) }}的问题
+    </div>
+    <div class="card-body">
       @if ($questions->count() > 0)
-        <ul class="list-group">
+        <ul class="list-group list-group-flush">
           @foreach($questions as $question)
             <li class="list-group-item">
               <span class="vote-count">{{ $question->vote_count }} 票</span>
@@ -18,5 +20,6 @@
       @else
       <div class="empty">该用户没有提过问题</div>
       @endif
+    </div>
   </div>
 @endsection

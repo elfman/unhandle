@@ -1,8 +1,13 @@
-@extends('layouts.app')
+@extends('users.profile')
 
-@section('content')
+@section('profile-content')
+<div class="card">
+  <div class="card-header">
+    {{ heOrMe($user) }}的回答
+  </div>
+  <div class="card-body">
   @if ($answers->count() > 0)
-    <ul class="list-group">
+    <ul class="list-group list-group-flush">
       @foreach($answers as $answer)
         <li class="list-group-item">
           <span class="vote-count">{{ $answer->vote_count }} 票</span>
@@ -15,4 +20,6 @@
   @else
     <div class="empty">该用户没有回答过问题</div>
   @endif
+  </div>
+</div>
 @endsection

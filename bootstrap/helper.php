@@ -25,3 +25,7 @@ function getTextBrief($text)
     $text = substr($text, 0, min(strlen($text), 300));
     return strip_tags((new Parsedown())->text($text));
 }
+
+function heOrMe($user) {
+    return $user->id === Auth::id() ? '我' : 'Ta ';
+}

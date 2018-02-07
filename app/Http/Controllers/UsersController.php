@@ -48,13 +48,13 @@ class UsersController extends Controller
 
     public function questions(User $user)
     {
-        $questions = Question::where('user_id', $user->id)->recent()->paginate(20);
+        $questions = Question::where('user_id', $user->id)->recent()->paginate(10);
         return view('users.questions', compact('user', 'questions'));
     }
 
     public function answers(User $user)
     {
-        $answers = Answer::where('user_id', $user->id)->recent()->with('question')->paginate(20);
+        $answers = Answer::where('user_id', $user->id)->recent()->with('question')->paginate(10);
         return view('users.answers', compact('user', 'answers'));
     }
 }

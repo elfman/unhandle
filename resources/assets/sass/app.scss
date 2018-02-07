@@ -264,6 +264,45 @@ img[identicon] {
   }
 }
 
+.user-center {
+  .profile {
+    display: flex;
+    margin-bottom: 1.5rem;
+    .avatar {
+      width: 250px;
+      height: 250px;
+    }
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+    }
+    .summery {
+      flex: 1;
+      margin-left: 1rem;
+
+      .name {
+        font-weight: bold;
+        font-size: 2rem;
+      }
+      .reputation {
+        display: inline-block;
+        align-items: center;
+        padding: 0 0.8em;
+        height: 2em;
+        line-height: 2em;
+        border-radius: 1em;
+        border: 1px solid #5cbb5c;
+        background-color: #dff0d8;
+      }
+    }
+    .introduction {
+      width: 400px;
+      border: 1px solid #676767;
+    }
+  }
+}
+
 .notifications-index-page {
   .answer-created {
     .avatar {
