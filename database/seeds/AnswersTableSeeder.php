@@ -7,7 +7,7 @@ class AnswersTableSeeder extends Seeder
 {
     public function run()
     {
-        $answers = factory(Answer::class)->times(900)->make();
+        $answers = factory(Answer::class)->times(3000)->make();
 
         Answer::insert($answers->toArray());
 

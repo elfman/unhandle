@@ -18,10 +18,11 @@ class CommentsTableSeeder extends Seeder
         $answers = Answer::all();
         $questions = Question::all();
 
-        $comments = [];
 
         foreach ($questions as $answer) {
             if ($faker->boolean(20)) continue;
+
+            $comments = [];
 
             $count = rand(1, 10);
 
@@ -38,13 +39,18 @@ class CommentsTableSeeder extends Seeder
                 ];
                 array_push($comments, $comment);
 
+
                 $id++;
                 $time = $faker->dateTimeInInterval($time, '+2 hours');
             }
+
+            Comment::insert($comments);
         }
 
         foreach ($answers as $answer) {
             if ($faker->boolean(20)) continue;
+
+            $comments = [];
 
             $count = rand(1, 10);
 
@@ -61,12 +67,13 @@ class CommentsTableSeeder extends Seeder
                 ];
                 array_push($comments, $comment);
 
+
                 $id++;
                 $time = $faker->dateTimeInInterval($time, '+2 hours');
             }
+            Comment::insert($comments);
         }
 
-        Comment::insert($comments);
 
     }
 
