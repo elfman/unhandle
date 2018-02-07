@@ -9,7 +9,7 @@ class QuestionsTableSeeder extends Seeder
 {
     public function run()
     {
-        $questions = factory(Question::class)->times(50)->make();
+        $questions = factory(Question::class)->times(400)->make();
 
         Question::insert($questions->toArray());
 

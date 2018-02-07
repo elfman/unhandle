@@ -6,6 +6,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
 @import 'typeahead.scss';
+@import "tagsinput.css";
 
 html {
   font-size: 16px;
@@ -71,6 +72,17 @@ img[identicon] {
   .info-header {
     font-size: 1.5rem;
   }
+
+  .user-profile {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .view-all {
+    display: block;
+    margin-top: 1rem;
+  }
 }
 
 .questions-index-page, .root-page, .questions-my-page {
@@ -118,37 +130,6 @@ img[identicon] {
     .brief {
       color: rgb(59, 64, 69);
     }
-    //.user-info {
-    //  display: flex;
-    //  align-items: center;
-    //  flex-wrap: wrap;
-    //  padding: 5px 6px 7px 7px;
-    //  float: right;
-    //  width: 13rem;
-    //
-    //  &.owner {
-    //    background-color: rgb(224, 234, 241);
-    //  }
-    //
-    //  >div:nth-child(2) {
-    //    margin-top: 4px;
-    //    display: flex;
-    //    align-items: center;
-    //  }
-    //
-    //  .user-action-time {
-    //    font-size: 0.8rem;
-    //    color: rgb(132, 141, 149);
-    //  }
-    //  .avatar {
-    //    width: 32px;
-    //    height: 32px;
-    //  }
-    //  .user-details {
-    //    margin-left: 10px;
-    //    font-size: 0.8rem;
-    //  }
-    //}
   }
 }
 

@@ -35,11 +35,7 @@ class CommentsTableSeeder extends Seeder
                     'body' => $faker->sentence,
                     'created_at' => $time,
                     'updated_at' => $time,
-                    'reply_to' => null,
                 ];
-                if ($i > 0 && $faker->boolean) {
-                    $comment['reply_to'] = rand($id - $i, $id);
-                }
                 array_push($comments, $comment);
 
                 $id++;
@@ -62,11 +58,7 @@ class CommentsTableSeeder extends Seeder
                     'body' => $faker->sentence,
                     'created_at' => $time,
                     'updated_at' => $time,
-                    'reply_to' => null,
                 ];
-                if ($i > 0 && $faker->boolean) {
-                    $comment['reply_to'] = rand($id - $i, $id);
-                }
                 array_push($comments, $comment);
 
                 $id++;

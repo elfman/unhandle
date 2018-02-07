@@ -16,6 +16,9 @@ Route::get('/', 'QuestionsController@index')->name('root');
 Auth::routes();
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+Route::get('/users/{user}/questions', 'UsersController@questions')->name('users.questions');
+Route::get('/users/{user}/answers', 'UsersController@answers')->name('users.answers');
+
 Route::get('/questions/my', 'QuestionsController@my')->name('questions.my');
 Route::resource('questions', 'QuestionsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 

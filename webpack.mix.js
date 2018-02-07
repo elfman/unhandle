@@ -14,7 +14,6 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
   .js('resources/assets/js/inline-attachment.js', 'public/js/inline-attachment.js')
-  .copy('node_modules/bootstrap4-tagsinput/tagsinput.css', 'public/css/tagsinput.css')
   .copyDirectory('node_modules/simplemde/dist/', 'public/js/simplemde/')
   .js('resources/assets/js/page-question-show.js', 'public/js/')
 ;

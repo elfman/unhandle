@@ -7,6 +7,7 @@ import Voter from './components/Voter.vue';
 import CommentEditor from './components/CommentEditor.vue';
 import AnswerAcceptor from './components/AnswerAcceptor.vue';
 
+
 Vue.component('voter', Voter);
 Vue.component('comment-editor', CommentEditor);
 Vue.component('answer-acceptor', AnswerAcceptor);
