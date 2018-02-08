@@ -47,23 +47,31 @@ class VotesTableSeeder extends Seeder
             Vote::insert($data);
         }
 
+        $sql_update_questions_vote = <<<EDT
+UPDATE questions, (SELECT `votable_id`, 
+SUM(
+  CASE WHEN `status`='upvote' THEN 1
+       WHEN `status`='downvote' THEN -1
+       ELSE 0 END
+) as vote_count FROM votes
+ WHERE `votable_type`='App\\\\Models\\\\Question' GROUP BY `votable_id`) as result
+ SET questions.vote_count=result.vote_count WHERE questions.id=result.votable_id
+EDT;
 
-        DB::update('UPDATE questions, (SELECT `votable_id`, 
+        $sql_update_answers_vote = 'UPDATE answers, (SELECT `votable_id`, 
 SUM(
   CASE WHEN `status`=\'upvote\' THEN 1
        WHEN `status`=\'downvote\' THEN -1
        ELSE 0 END
 ) as vote_count FROM votes
- WHERE STRCMP(`votable_type`, \'App\\Models\\Question\') GROUP BY `votable_id`) as result
- SET questions.vote_count=result.vote_count WHERE questions.id=result.votable_id');
+ WHERE `votable_type`=\'App\\\\Models\\\\Answer\' GROUP BY `votable_id`) as result
+ SET answers.vote_count=result.vote_count WHERE answers.id=result.votable_id';
 
-        DB::update('UPDATE answers, (SELECT `votable_id`, 
-SUM(
-  CASE WHEN `status`=\'upvote\' THEN 1
-       WHEN `status`=\'downvote\' THEN -1
-       ELSE 0 END
-) as vote_count FROM votes
- WHERE STRCMP(`votable_type`, \'App\\Models\\Answer\') GROUP BY `votable_id`) as result
- SET answers.vote_count=result.vote_count WHERE answers.id=result.votable_id');
+
+        DB::update($sql_update_questions_vote);
+
+        DB::update($sql_update_answers_vote);
+
+        Artisan::call('unhandle:recompute_user_reputation');
     }
 }

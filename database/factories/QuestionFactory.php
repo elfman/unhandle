@@ -20,5 +20,6 @@ $factory->define(App\Models\Question::class, function (Faker $faker) {
         'user_id' => $faker->randomElement($user_ids),
         'created_at' => $created_at,
         'updated_at' => $updated_at,
+        'view_count' => rand(0, 10000),
     ];
 });
