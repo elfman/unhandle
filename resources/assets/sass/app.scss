@@ -266,39 +266,69 @@ img[identicon] {
 
 .user-center {
   .profile {
+    margin-top: -1.5rem;
+    background-color: #f6f6f6;
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+    > .container {
+      display: flex;
+      .avatar {
+        width: 250px;
+        height: 250px;
+      }
+      img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+      }
+      .summery {
+        flex: 1;
+        margin-left: 1rem;
+
+        .name {
+          font-weight: bold;
+          font-size: 2rem;
+        }
+        .reputation {
+          display: inline-block;
+          align-items: center;
+          padding: 0 0.8em;
+          height: 2em;
+          line-height: 2em;
+          border-radius: 1em;
+          border: 1px solid #5cbb5c;
+          background-color: #dff0d8;
+        }
+      }
+      .introduction {
+        width: 30rem;
+        background-color: #eeeeee;
+      }
+    }
+  }
+
+
+  .question-item, .answer-item {
     display: flex;
-    margin-bottom: 1.5rem;
-    .avatar {
-      width: 250px;
-      height: 250px;
-    }
-    img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-    }
-    .summery {
+    align-items: center;
+    > a {
       flex: 1;
       margin-left: 1rem;
-
-      .name {
-        font-weight: bold;
-        font-size: 2rem;
-      }
-      .reputation {
-        display: inline-block;
-        align-items: center;
-        padding: 0 0.8em;
-        height: 2em;
-        line-height: 2em;
-        border-radius: 1em;
-        border: 1px solid #5cbb5c;
-        background-color: #dff0d8;
-      }
     }
-    .introduction {
-      width: 400px;
-      border: 1px solid #676767;
+    .time {
+      justify-self: flex-end;
+      text-align: end;
+      width: 7.6rem;
+    }
+
+    .vote-count {
+      display: inline-block;
+      width: 4rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      text-align: center;
+      background-color: #fcf8e3;
+      color: #9a6d3b;
     }
   }
 }

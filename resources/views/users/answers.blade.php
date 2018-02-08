@@ -9,10 +9,10 @@
   @if ($answers->count() > 0)
     <ul class="list-group list-group-flush">
       @foreach($answers as $answer)
-        <li class="list-group-item">
+        <li class="list-group-item answer-item">
           <span class="vote-count">{{ $answer->vote_count }} 票</span>
-          <span class="title">{{ $answer->question->title }}</span>
-          <span class="time pull-right">{{ $answer->created_at->format('y年m月d日 h:i') }}</span>
+          <a href="{{ $answer->question->link('#answer'. $answer->id) }}" class="title">{{ $answer->question->title }}</a>
+          <span class="time">{{ $answer->created_at->format('y-m-d h:i') }}</span>
         </li>
       @endforeach
     </ul>
