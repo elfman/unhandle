@@ -25,7 +25,9 @@
   <div class="container">
     @include('layouts._message')
   </div>
-  @yield('content')
+  <div class="app-content">
+    @yield('content')
+  </div>
 
   @include('layouts._footer')
 

@@ -18,31 +18,39 @@ class VotesTableSeeder extends Seeder
         $faker = app(\Faker\Generator::class);
 
         $user_ids = User::all()->pluck('id')->toArray();
-        $question_ids = Question::all()->pluck('id')->toArray();
-        $answer_ids = Answer::all()->pluck('id')->toArray();
+        $questions = Question::all()->toArray();
+        $answers = Answer::all()->toArray();
 
         $status = ['upvote', 'downvote'];
 
         foreach ($user_ids as $user_id) {
-            $data = array_map(function ($question_id) use ($user_id, $faker, $status) {
+            $time = null;
+            $data = array_map(function ($question) use ($user_id, $faker, $status, $time) {
+                $time = $faker->dateTimeBetween($time ?: $question['created_at'], '+2 hours');
                 return [
                     'user_id' => $user_id,
-                    'votable_id' => $question_id,
+                    'votable_id' => $question['id'],
                     'votable_type' => Question::class,
                     'status' => $faker->randomElement($status),
+                    'created_at' => $time,
+                    'updated_at' => $time,
                 ];
-            }, $faker->randomElements($question_ids, 200));
+            }, $faker->randomElements($questions, 200));
 
             Vote::insert($data);
 
-            $data = array_map(function ($answer_id) use ($user_id, $faker, $status) {
+            $time = null;
+            $data = array_map(function ($answer) use ($user_id, $faker, $status, $time) {
+                $time = $faker->dateTimeBetween($time ?: $answer['created_at'], '+2 hours');
                 return [
                     'user_id' => $user_id,
-                    'votable_id' => $answer_id,
+                    'votable_id' => $answer['id'],
                     'votable_type' => Answer::class,
                     'status' => $faker->randomElement($status),
+                    'created_at' => $time,
+                    'updated_at' => $time,
                 ];
-            }, $faker->randomElements($answer_ids, 500));
+            }, $faker->randomElements($answers, 500));
 
             Vote::insert($data);
         }

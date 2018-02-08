@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\RankUserHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ class User extends Authenticatable
     use Notifiable {
         notify as protected laravelNotify;
     }
+    use RankUserHelper;
 
     public function notify($instance)
     {

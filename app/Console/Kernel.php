@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('unhandle:sync-question-view-count')->daily();
+        $schedule->command('unhandle:sync_question_view_count')->daily();
+        $schedule->command('unhandle:calculate_user_reputation_rank')->everyFiveMinutes();
     }
 
     /**

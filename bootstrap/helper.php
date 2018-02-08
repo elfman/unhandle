@@ -29,3 +29,12 @@ function getTextBrief($text)
 function heOrMe($user) {
     return $user->id === Auth::id() ? '我' : 'Ta ';
 }
+
+function shortenNumber($num)
+{
+    if ($num < 1000) {
+        return $num;
+    }
+
+    return number_format($num / 1000, 1). 'k';
+}

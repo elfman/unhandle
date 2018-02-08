@@ -12,7 +12,7 @@ class sync_question_view_count extends Command
      *
      * @var string
      */
-    protected $signature = 'unhandle:sync-question-view-count';
+    protected $signature = 'unhandle:sync_question_view_count';
 
     /**
      * The console command description.

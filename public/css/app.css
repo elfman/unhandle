@@ -13184,7 +13184,11 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+body > div:first-child {
+  position: relative;
 }
 
 img[identicon] {
@@ -13245,6 +13249,24 @@ img[identicon] {
 
 .navbar .dropdown {
   top: 4px;
+}
+
+.app-content {
+  padding-bottom: 60px;
+}
+
+footer.footer {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
 }
 
 .users-show-page .info-header {
@@ -13506,6 +13528,36 @@ img[identicon] {
   color: #9199a1;
   font-size: 1.1em;
   margin-left: 0.5rem;
+}
+
+.side-bar .reputation-rank .item-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #999;
+  margin-bottom: 0.4rem;
+}
+
+.side-bar .reputation-rank .item-user > span:first-child {
+  width: 1rem;
+}
+
+.side-bar .reputation-rank .item-user img {
+  margin: 0 0.3rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
+.side-bar .reputation-rank .item-user a {
+  font-size: 0.9rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .user-center .profile {

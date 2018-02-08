@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionRequest;
@@ -20,7 +21,8 @@ class QuestionsController extends Controller
 	public function index(Question $question)
 	{
 		$questions = $question->orderBy('created_at', 'desc')->paginate(20);
-		return view('questions.index', compact('questions'));
+		$reputationRank = User::getUserReputationRank();
+		return view('questions.index', compact('questions', 'reputationRank'));
 	}
 
     public function show(Question $question)
