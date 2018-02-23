@@ -283,6 +283,16 @@ footer.footer {
 
 .side-bar {
   .reputation-rank {
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .nav-link {
+        padding: 0.25rem 0.5rem;
+      }
+    }
+
     .item-user {
       display: flex;
       height: 2rem;

@@ -21,8 +21,9 @@ class QuestionsController extends Controller
 	public function index(Question $question)
 	{
 		$questions = $question->orderBy('created_at', 'desc')->paginate(20);
-		$reputationRank = User::getUserReputationRank();
-		return view('questions.index', compact('questions', 'reputationRank'));
+		$reputationRank = User::getUserLastWeekReputationRank();
+		$totalReputationRank = User::getUserTotalReputationRank();
+		return view('questions.index', compact('questions', 'reputationRank', 'totalReputationRank'));
 	}
 
     public function show(Question $question)

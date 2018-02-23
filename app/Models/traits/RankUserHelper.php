@@ -9,23 +9,23 @@ use Illuminate\Support\Facades\DB;
 trait RankUserHelper
 {
     static protected $rank_cache_key = 'unhandle_user_reputation_rank';
+    static protected $rank_total_cache_key = 'unhandle_user_total_reputation_rank';
     static protected $rank_expire_in_minutes = 65;
 
-    static public function getUserReputationRank()
+    static public function getUserLastWeekReputationRank()
     {
         return Cache::remember(self::$rank_cache_key, self::$rank_expire_in_minutes, function () {
-            return self::calculateReputationRank();
+            return self::calculateLastWeekReputationRank();
         });
     }
-
-    static public function calculateAndCacheReputationRank()
+    static public function calculateAndCacheLastWeekReputationRank()
     {
-        $rank = self::calculateReputationRank();
-        self::cacheReputationRank($rank);
+        $rank = self::calculateLastWeekReputationRank();
+        self::cacheLastWeekReputationRank($rank);
         return $rank;
     }
 
-    static private function calculateReputationRank()
+    static private function calculateLastWeekReputationRank()
     {
         $beforeDate = Carbon::parse('-1 week')->toDateTimeString();
         $sql = <<<EDT
@@ -46,8 +46,38 @@ EDT;
         return $rank;
     }
 
-    static private function cacheReputationRank($rank)
+    static private function cacheLastWeekReputationRank($rank)
     {
         Cache::put(self::$rank_cache_key, $rank, self::$rank_expire_in_minutes);
     }
+
+    static public function getUserTotalReputationRank()
+    {
+        return Cache::remember(self::$rank_total_cache_key, self::$rank_expire_in_minutes, function () {
+            return self::calculateTotalReputationRank();
+        });
+    }
+
+    static public function calculateAndCacheTotalReputationRank()
+    {
+        $rank = self::calculateTotalReputationRank();
+        self::cacheTotalReputationRank($rank);
+        return $rank;
+    }
+
+
+    static public function calculateTotalReputationRank()
+    {
+        $sql = <<<EOT
+SELECT id, name, `reputation`, avatar, email FROM users ORDER BY reputation DESC LIMIT 10
+EOT;
+        $rank = DB::select($sql);
+        return $rank;
+    }
+
+    static private function cacheTotalReputationRank($rank)
+    {
+        Cache::put(self::$rank_total_cache_key, $rank, self::$rank_expire_in_minutes);
+    }
+
 }
