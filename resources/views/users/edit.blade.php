@@ -22,11 +22,6 @@
                      value="{{ old('name', $user->name) }}">
             </div>
             <div class="form-group">
-              <label for="email-field">邮 箱</label>
-              <input class="form-control" type="email" name="email" id="email-field"
-                     value="{{ old('email', $user->email) }}">
-            </div>
-            <div class="form-group">
               <label for="name-field">个人简介</label>
               <textarea class="form-control" name="introduction" id="introduction-field"
                         rows="3">{{ old('introduction', $user->introduction) }}</textarea>
@@ -38,6 +33,18 @@
                 <br>
                 <img class="img-fluid img-thumbnail" src="{{ $user->avatar }}" alt="avatar">
               @endif
+            </div>
+            <div class="form-group oauth">
+              <label>其它网站账号</label>
+              <div>
+                <div><i class="fa fa-github"></i> Github:
+                  @if ($user->github_id)
+                  {{ $user->github_name }} <a href="{{ route('oauth.github.unbind') }}">解绑</a>
+                  @else
+                    尚未绑定 <a href="{{ route('oauth.github.redirect') }}">绑定</a>
+                  @endif
+                </div>
+              </div>
             </div>
           </div>
           <div class="card-footer">

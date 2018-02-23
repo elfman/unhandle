@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Mews\Purifier\PurifierServiceProvider::class,
+        Overtrue\LaravelSocialite\ServiceProvider::class,
     ],
 
     /*
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Socialite' => Overtrue\LaravelSocialite\Socialite::class,
     ],
 
 ];

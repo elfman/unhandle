@@ -13269,6 +13269,17 @@ footer.footer {
   height: 60px;
 }
 
+.login-page .oauth,
+.register-page .oauth {
+  margin-top: 1rem;
+}
+
+.login-page .oauth i,
+.register-page .oauth i {
+  font-size: 2rem;
+  color: black;
+}
+
 .users-show-page .info-header {
   font-size: 1.5rem;
 }
@@ -13281,6 +13292,10 @@ footer.footer {
 .users-show-page .view-all {
   display: block;
   margin-top: 1rem;
+}
+
+.users-edit-page .oauth i {
+  font-size: 1.3rem;
 }
 
 .questions-index-page .question,

@@ -40,3 +40,7 @@ Route::resource('comments', 'CommentsController', ['only' => ['store', 'update',
 Route::post('/comments/reply', 'CommentsController@store')->name('comments.reply');
 
 Route::get('/notifications', 'NotificationsController@index')->name('notifications.index');
+
+Route::get('/oauth/github', 'OauthController@redirectToProvider')->name('oauth.github.redirect');
+Route::get('/oauth/github/callback', 'OauthController@handleProviderCallback')->name('oauth.github.callback');
+Route::get('/oauth/github/unbind', 'OauthController@unbind')->name('oauth.github.unbind');

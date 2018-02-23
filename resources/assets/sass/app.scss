@@ -83,6 +83,13 @@ footer.footer {
 }
 
 .login-page, .register-page {
+  .oauth {
+    margin-top: 1rem;
+    i {
+      font-size: 2rem;
+      color: black;
+    }
+  }
 }
 
 .users-show-page {
@@ -99,6 +106,14 @@ footer.footer {
   .view-all {
     display: block;
     margin-top: 1rem;
+  }
+}
+
+.users-edit-page {
+  .oauth {
+    i {
+      font-size: 1.3rem;
+    }
   }
 }
 
