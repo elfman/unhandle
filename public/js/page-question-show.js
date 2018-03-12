@@ -12297,7 +12297,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       editing: false,
-      commiting: false,
+      committing: false,
       text: null,
       timerHandler: null,
       errMsg: null
@@ -12308,9 +12308,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     commit: function commit() {
       var _this = this;
 
-      if (this.commiting || !this.validCommit(this.text)) return;
+      if (this.committing || !this.validCommit(this.text)) return;
 
-      this.commiting = true;
+      this.committing = true;
       $.post({
         url: '/comments',
         data: {
@@ -12319,7 +12319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           body: this.text
         },
         success: function success(data) {
-          _this.commiting = false;
+          _this.committing = false;
           if (data.code === 0) {
             _this.text = null;
             _this.editing = false;
@@ -12331,24 +12331,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
 
-    showValidMessage: function showValidMessage(msg) {
-      var $editor = $(this.$refs.editor);
-      $editor.tooltip({
-        placement: 'right',
-        title: msg
-      }).tooltip('show');
-
-      if (this.timerHandler) {
-        clearTimeout(this.timerHandler);
-      }
-      setTimeout(function () {
-        $editor.tooltip('dispose');
-      }, 2000);
-    },
-
-
-    validCommit: function validCommit() {
-      console.log('trigger valid');
+    validComment: function validComment() {
       if (!this.text || this.text.length < 10) {
         this.errMsg = '请输入至少10个字符';
         return false;
@@ -12403,7 +12386,7 @@ var render = function() {
               attrs: { rows: "4", placeholder: "请输入评论，至少10个字符~~" },
               domProps: { value: _vm.text },
               on: {
-                blur: _vm.validCommit,
+                blur: _vm.validComment,
                 input: function($event) {
                   if ($event.target.composing) {
                     return

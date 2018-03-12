@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="user-info owner">
-              <div class="user-action-time">asked {{ $question->created_at }}</div>
+              <div class="user-action-time">创建于 {{ $question->created_at }}</div>
               <div>
                 <img class="avatar" {{ avatarAttr($question->user) }} alt="">
                 <div class="user-details">
