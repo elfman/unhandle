@@ -12,4 +12,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    $router->resource('questions', 'QuestionController');
+    $router->resource('answers', 'AnswerController');
+    $router->resource('comments', 'CommentController');
 });
