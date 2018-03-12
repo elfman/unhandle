@@ -1,11 +1,19 @@
 <template>
   <div class="add-comment" ref="wrapper">
     <hr>
-    <a href="javascript:void(0)" class="add-comment-show" v-if="!editing" @click="editing=true">添加评论</a>
-    <div class="add-comment-area" v-if="editing">
-      <textarea rows="4" placeholder="请输入评论，至少15个字符~~" v-model="text"></textarea>
-      <button class="btn btn-primary add-comment-button" @click="commit">添加评论</button>
-    </div>
+    <a href="javascript:void(0)" class="add-comment-show" v-if="!editing" @click="editing = true">添加评论</a>
+    <form class="need-validation add-comment-area" v-if="editing">
+      <div class="input-group">
+        <textarea class="form-control" :class="{'is-invalid': errMsg}" rows="4" placeholder="请输入评论，至少10个字符~~" v-model="text" @blur="validComment"></textarea>
+        <div class="invalid-feedback" v-if="errMsg">
+          {{ errMsg }}
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary add-comment-button" @click="commit">添加评论</button>
+        <button class="btn btn-link" @click="editing=false">取消</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -18,15 +26,17 @@
     data() {
       return {
         editing: false,
-        commiting: false,
+        committing: false,
         text: null,
+        timerHandler: null,
+        errMsg: null,
       };
     },
     methods: {
       commit: function () {
-        if (this.commiting) return;
+        if (this.committing || !this.validCommit(this.text)) return;
 
-        this.commiting = true;
+        this.committing = true;
         $.post({
           url: '/comments',
           data: {
@@ -35,7 +45,7 @@
             body: this.text
           },
           success: data => {
-            this.commiting = false;
+            this.committing = false;
             if (data.code === 0) {
               this.text = null;
               this.editing = false;
@@ -54,6 +64,15 @@
           }
         });
       },
+
+      validComment: function () {
+        if (!this.text || this.text.length < 10) {
+          this.errMsg = '请输入至少10个字符';
+          return false;
+        }
+        this.errMsg = null;
+        return true;
+      }
     }
   }
 </script>
@@ -70,14 +89,23 @@
     .add-comment-area {
       display: flex;
 
-      textarea {
+      > div:first-child {
         flex: 1;
+
+        textarea {
+          width: 100%;
+        }
       }
 
-      button {
+      > div:last-child {
+        text-align: center;
         width: 7rem;
         height: 2.3rem;
         margin: 0 0.5em;
+
+        > button {
+          width: 100%;
+        }
       }
     }
   }
