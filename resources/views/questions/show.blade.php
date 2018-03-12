@@ -17,6 +17,9 @@
               :vote-count="{{ $question->vote_count }}"
               vote-status="{{ $question->voted() }}"
           ></voter>
+          @if ($question->accept_answer !== null)
+          <div class="badge badge-success">已解决</div>
+          @endif
         </div>
         <div class="right">
           <div class="body markdown-body">

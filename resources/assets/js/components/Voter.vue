@@ -87,6 +87,7 @@
     color: rgb(106, 115, 124);
     font-size: 1.8rem;
     line-height: 1;
+    height: 5rem;
 
     .vote-count {
       position: relative;

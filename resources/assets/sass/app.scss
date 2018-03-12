@@ -208,6 +208,7 @@ footer.footer {
     display: flex;
     > .left {
       width: 4rem;
+      text-align: center;
     }
     > .right {
       flex: 1;
@@ -235,6 +236,7 @@ footer.footer {
     padding: 0 10px;
     .vote {
       font-size: 1.6rem;
+      height: 4.5rem;
     }
     .vote-count {
       top: 0.9rem;

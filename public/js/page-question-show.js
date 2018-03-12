@@ -11996,7 +11996,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.vote[data-v-54acef21] {\n  text-align: center;\n  color: #6a737c;\n  font-size: 1.8rem;\n  line-height: 1;\n}\n.vote .vote-count[data-v-54acef21] {\n    position: relative;\n    top: 0.8rem;\n}\n.vote .up[data-v-54acef21], .vote .down[data-v-54acef21] {\n    font-size: 3rem;\n    line-height: 1rem;\n    height: 1rem;\n    cursor: pointer;\n    position: relative;\n    left: 1.38rem;\n    top: 0.78rem;\n}\n.vote .up.active .triangle[data-v-54acef21], .vote .down.active .triangle[data-v-54acef21] {\n      border-color: #007bff transparent transparent #007bff;\n}\n.vote .up .triangle[data-v-54acef21], .vote .down .triangle[data-v-54acef21] {\n      width: 0;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg);\n      border-width: 0.6rem;\n      border-color: #6a737c transparent transparent #6a737c;\n      border-style: solid;\n      border-radius: 4px;\n}\n.vote .up .triangle.reverse[data-v-54acef21], .vote .down .triangle.reverse[data-v-54acef21] {\n        -webkit-transform: rotate(-135deg);\n                transform: rotate(-135deg);\n}\n", ""]);
+exports.push([module.i, "\n.vote[data-v-54acef21] {\n  text-align: center;\n  color: #6a737c;\n  font-size: 1.8rem;\n  line-height: 1;\n  height: 5rem;\n}\n.vote .vote-count[data-v-54acef21] {\n    position: relative;\n    top: 0.8rem;\n}\n.vote .up[data-v-54acef21], .vote .down[data-v-54acef21] {\n    font-size: 3rem;\n    line-height: 1rem;\n    height: 1rem;\n    cursor: pointer;\n    position: relative;\n    left: 1.38rem;\n    top: 0.78rem;\n}\n.vote .up.active .triangle[data-v-54acef21], .vote .down.active .triangle[data-v-54acef21] {\n      border-color: #007bff transparent transparent #007bff;\n}\n.vote .up .triangle[data-v-54acef21], .vote .down .triangle[data-v-54acef21] {\n      width: 0;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg);\n      border-width: 0.6rem;\n      border-color: #6a737c transparent transparent #6a737c;\n      border-style: solid;\n      border-radius: 4px;\n}\n.vote .up .triangle.reverse[data-v-54acef21], .vote .down .triangle.reverse[data-v-54acef21] {\n        -webkit-transform: rotate(-135deg);\n                transform: rotate(-135deg);\n}\n", ""]);
 
 // exports
 
@@ -12258,7 +12258,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.add-comment[data-v-21d77a05] {\n  margin-top: 0.4rem;\n  font-size: 0.85rem;\n}\n.add-comment hr[data-v-21d77a05] {\n    margin-bottom: 0.5rem;\n}\n.add-comment .add-comment-area[data-v-21d77a05] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.add-comment .add-comment-area textarea[data-v-21d77a05] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n}\n.add-comment .add-comment-area button[data-v-21d77a05] {\n      width: 7rem;\n      height: 2.3rem;\n      margin: 0 0.5em;\n}\n", ""]);
+exports.push([module.i, "\n.add-comment[data-v-21d77a05] {\n  margin-top: 0.4rem;\n  font-size: 0.85rem;\n}\n.add-comment hr[data-v-21d77a05] {\n    margin-bottom: 0.5rem;\n}\n.add-comment .add-comment-area[data-v-21d77a05] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.add-comment .add-comment-area > div[data-v-21d77a05]:first-child {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n}\n.add-comment .add-comment-area > div:first-child textarea[data-v-21d77a05] {\n        width: 100%;\n}\n.add-comment .add-comment-area > div[data-v-21d77a05]:last-child {\n      text-align: center;\n      width: 7rem;\n      height: 2.3rem;\n      margin: 0 0.5em;\n}\n.add-comment .add-comment-area > div:last-child > button[data-v-21d77a05] {\n        width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -12280,6 +12280,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -12290,7 +12298,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       editing: false,
       commiting: false,
-      text: null
+      text: null,
+      timerHandler: null,
+      errMsg: null
     };
   },
 
@@ -12298,7 +12308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     commit: function commit() {
       var _this = this;
 
-      if (this.commiting) return;
+      if (this.commiting || !this.validCommit(this.text)) return;
 
       this.commiting = true;
       $.post({
@@ -12319,6 +12329,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }
         }
       });
+    },
+
+    showValidMessage: function showValidMessage(msg) {
+      var $editor = $(this.$refs.editor);
+      $editor.tooltip({
+        placement: 'right',
+        title: msg
+      }).tooltip('show');
+
+      if (this.timerHandler) {
+        clearTimeout(this.timerHandler);
+      }
+      setTimeout(function () {
+        $editor.tooltip('dispose');
+      }, 2000);
+    },
+
+
+    validCommit: function validCommit() {
+      console.log('trigger valid');
+      if (!this.text || this.text.length < 10) {
+        this.errMsg = '请输入至少10个字符';
+        return false;
+      }
+      this.errMsg = null;
+      return true;
     }
   }
 });
@@ -12351,36 +12387,62 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.editing
-      ? _c("div", { staticClass: "add-comment-area" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.text,
-                expression: "text"
-              }
-            ],
-            attrs: { rows: "4", placeholder: "请输入评论，至少15个字符~~" },
-            domProps: { value: _vm.text },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+      ? _c("form", { staticClass: "need-validation add-comment-area" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.text,
+                  expression: "text"
                 }
-                _vm.text = $event.target.value
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errMsg },
+              attrs: { rows: "4", placeholder: "请输入评论，至少10个字符~~" },
+              domProps: { value: _vm.text },
+              on: {
+                blur: _vm.validCommit,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.text = $event.target.value
+                }
               }
-            }
-          }),
+            }),
+            _vm._v(" "),
+            _vm.errMsg
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v("\n        " + _vm._s(_vm.errMsg) + "\n      ")
+                ])
+              : _vm._e()
+          ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary add-comment-button",
-              on: { click: _vm.commit }
-            },
-            [_vm._v("添加评论")]
-          )
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary add-comment-button",
+                on: { click: _vm.commit }
+              },
+              [_vm._v("添加评论")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                on: {
+                  click: function($event) {
+                    _vm.editing = false
+                  }
+                }
+              },
+              [_vm._v("取消")]
+            )
+          ])
         ])
       : _vm._e()
   ])

@@ -31,6 +31,11 @@ class AnswerObserver
 
     public function deleted(Answer $answer)
     {
-        $answer->question->decrement('answer_count');
+        $question = $answer->question;
+        $question->answer_count--;
+        if ($answer->is_accepted) {
+            $question->accept_answer = null;
+        }
+        $question->save();
     }
 }
