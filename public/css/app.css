@@ -13189,6 +13189,7 @@ body {
 
 body > div:first-child {
   position: relative;
+  min-height: 100vh;
 }
 
 img[identicon] {
@@ -13387,6 +13388,22 @@ footer.footer {
 .root-page .question .brief,
 .questions-my-page .question .brief {
   color: #3b4045;
+}
+
+.relative-questions {
+  margin-top: 15px;
+}
+
+.relative-questions .relative-question {
+  margin-bottom: 8px;
+}
+
+.relative-questions .relative-question > div:nth-child(2) {
+  font-size: 0.85rem;
+}
+
+.relative-questions .relative-question > div:nth-child(2) > *:nth-child(2) {
+  margin-left: 1rem;
 }
 
 .user-info {

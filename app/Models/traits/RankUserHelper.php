@@ -27,6 +27,7 @@ trait RankUserHelper
 
     static private function calculateLastWeekReputationRank()
     {
+        // TODO 若最近一周没有出现活动，边栏会只出现一个 + 号
         $beforeDate = Carbon::parse('-1 week')->toDateTimeString();
         $sql = <<<EDT
 SELECT *, (question_score+answer_score) as last_week_reputation FROM users

@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   >div:first-child {
     position: relative;
+    min-height: 100vh;
   }
 }
 
@@ -161,6 +162,22 @@ footer.footer {
     }
     .brief {
       color: rgb(59, 64, 69);
+    }
+  }
+}
+
+.relative-questions {
+  margin-top: 15px;
+
+  .relative-question {
+    margin-bottom: 8px;
+
+    >div:nth-child(2) {
+      font-size: 0.85rem;
+
+      >*:nth-child(2) {
+        margin-left: 1rem;
+      }
     }
   }
 }

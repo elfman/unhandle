@@ -30,7 +30,8 @@ class QuestionsController extends Controller
     {
         $question->with(['answers', 'answers.user', 'user', 'comments', 'comments.user', 'answers.comments', 'answers.comments.user']);
         $question->increaseViewCount();
-        return view('questions.show', compact('question'));
+        $relatives = $question->relativeQuestions();
+        return view('questions.show', compact('question', 'relatives'));
     }
 
 	public function create(Question $question)

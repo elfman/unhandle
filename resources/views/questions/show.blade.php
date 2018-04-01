@@ -6,114 +6,54 @@
 
 @section('content')
   <div class="container" id="content">
-    <div class="card question" data-id="{{ $question->id }}">
-      <div class="title">{{ $question->title }}</div>
-      <hr>
-      <div class="content">
-        <div class="left">
-          <voter
-              type="questions"
-              :id="{{ $question->id }}"
-              :vote-count="{{ $question->vote_count }}"
-              vote-status="{{ $question->voted() }}"
-          ></voter>
-          @if ($question->accept_answer !== null)
-          <div class="badge badge-success">已解决</div>
-          @endif
-        </div>
-        <div class="right">
-          <div class="body markdown-body">
-            {!! clean(Parsedown::instance()->text($question->body)) !!}
-          </div>
-          <div class="actions">
-            <div>
-              <div class="tags">
-                @foreach($question->tags as $tag)
-                  <span class="badge badge-info">{{ $tag->name }}</span>
-                @endforeach
-              </div>
-              <div class="operations">
-                @can('update', $question)
-                <a href="{{ route('questions.edit', $question->id) }}">编辑</a>
-                @endcan
-                @can('destroy', $question)
-                <a href="javascript:void(0)" class="remove-question">删除</a>
-                @endcan
-              </div>
-            </div>
-            <div class="user-info owner">
-              <div class="user-action-time">创建于 {{ $question->created_at }}</div>
-              <div>
-                <img class="avatar" {{ avatarAttr($question->user) }} alt="">
-                <div class="user-details">
-                  <div class="name">
-                    <a href="{{ route('users.show', $question->user->id) }}">
-                      {{ $question->user->name }}
-                    </a>
-                  </div>
-                  <div class="reputation">{{ $question->user->reputation }} 声望</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="comments">
-        <div class="list">
-          @foreach($question->comments as $comment)
-            <div class="comment" id="comment{{ $comment->id }}">
-              <hr>
-              <span class="comment-text">{{ $comment->body }}</span>
-              -
-              <a class="comment-user" href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
-              <span class="comment-time">{{ $comment->created_at->format('y-m-d \a\t h:i') }}</span>
-            </div>
-          @endforeach
-        </div>
-        @can('comment', $question)
-          <comment-editor type="question" :id="{{ $question->id }}"></comment-editor>
-        @endcan
-      </div>
-    </div>
-    <hr>
-    <div class="answer-list">
-      <div class="answer-count">{{ count($question->answers) }} Answers</div>
-      @foreach($question->answers as $answer)
-        <div class="answer" id="answer{{ $answer->id }}" data-id="{{ $answer->id }}">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card question" data-id="{{ $question->id }}">
+          <div class="title">{{ $question->title }}</div>
+          <hr>
           <div class="content">
             <div class="left">
               <voter
-                  type="answers"
-                  :id="{{ $answer->id }}"
-                  :vote-count="{{ $answer->vote_count }}"
-                  vote-status="{{ $answer->voted() }}"
+                  type="questions"
+                  :id="{{ $question->id }}"
+                  :vote-count="{{ $question->vote_count }}"
+                  vote-status="{{ $question->voted() }}"
               ></voter>
-              <answer-acceptor :id="{{ $answer->id }}" :can-accept="{{ (Auth::check() and Auth::user()->can('accept', $answer)) ? 'true' : 'false' }}"></answer-acceptor>
+              @if ($question->accept_answer !== null)
+                <div class="badge badge-success">已解决</div>
+              @endif
             </div>
             <div class="right">
               <div class="body markdown-body">
-                {!! clean(Parsedown::instance()->text($answer->body)) !!}
+                {!! clean(Parsedown::instance()->text($question->body)) !!}
               </div>
               <div class="actions">
-                <div class="operations">
-                  @can('update', $answer)
-                    <a href="{{ route('answers.edit', $answer->id) }}">编辑</a>
-                  @endcan
-                  @can('destroy', $answer)
-                    <a href="javascript:void(0)" class="remove-answer">删除</a>
-                  @endcan
+                <div>
+                  <div class="tags">
+                    @foreach($question->tags as $tag)
+                      <span class="badge badge-info">{{ $tag->name }}</span>
+                    @endforeach
+                  </div>
+                  <div class="operations">
+                    @can('update', $question)
+                      <a href="{{ route('questions.edit', $question->id) }}">编辑</a>
+                    @endcan
+                    @can('destroy', $question)
+                      <a href="javascript:void(0)" class="remove-question">删除</a>
+                    @endcan
+                  </div>
                 </div>
-                <div class="user-info">
-                  <div class="user-action-time">answered {{ $answer->created_at }}</div>
+                <div class="user-info owner">
+                  <div class="user-action-time">创建于 {{ $question->created_at }}</div>
                   <div>
-                    <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
+                    <img class="avatar" {{ avatarAttr($question->user) }} alt="">
                     <div class="user-details">
                       <div class="name">
-                        <a href="{{ route('users.show', $answer->user->id) }}">
-                          {{ $answer->user->name }}
+                        <a href="{{ route('users.show', $question->user->id) }}">
+                          {{ $question->user->name }}
                         </a>
                       </div>
-                      <div class="reputation">{{ $answer->user->reputation }} 声望</div>
+                      <div class="reputation">{{ $question->user->reputation }} 声望</div>
                     </div>
                   </div>
                 </div>
@@ -122,33 +62,133 @@
           </div>
           <div class="comments">
             <div class="list">
-              @foreach($answer->comments as $comment)
+              @foreach($question->comments as $comment)
                 <div class="comment" id="comment{{ $comment->id }}">
                   <hr>
                   <span class="comment-text">{{ $comment->body }}</span>
                   -
-                  <a class="comment-user" href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+                  <a class="comment-user"
+                     href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
                   <span class="comment-time">{{ $comment->created_at->format('y-m-d \a\t h:i') }}</span>
-
-                  @can('destroy', $comment)
-                    <span class="fa fa-trash comment-remove" data-id="{{ $comment->id }}"></span>
-                  @endcan
                 </div>
               @endforeach
             </div>
             @can('comment', $question)
-              <comment-editor type="answer" :id="{{ $answer->id }}"></comment-editor>
+              <comment-editor type="question" :id="{{ $question->id }}"></comment-editor>
             @endcan
           </div>
         </div>
         <hr>
-      @endforeach
-    </div>
+        <div class="answer-list">
+          <div class="answer-count">{{ count($question->answers) }} Answers</div>
+          @foreach($question->answers as $answer)
+            <div class="answer" id="answer{{ $answer->id }}" data-id="{{ $answer->id }}">
+              <div class="content">
+                <div class="left">
+                  <voter
+                      type="answers"
+                      :id="{{ $answer->id }}"
+                      :vote-count="{{ $answer->vote_count }}"
+                      vote-status="{{ $answer->voted() }}"
+                  ></voter>
+                  <answer-acceptor :id="{{ $answer->id }}"
+                                   :can-accept="{{ (Auth::check() and Auth::user()->can('accept', $answer)) ? 'true' : 'false' }}"></answer-acceptor>
+                </div>
+                <div class="right">
+                  <div class="body markdown-body">
+                    {!! clean(Parsedown::instance()->text($answer->body)) !!}
+                  </div>
+                  <div class="actions">
+                    <div class="operations">
+                      @can('update', $answer)
+                        <a href="{{ route('answers.edit', $answer->id) }}">编辑</a>
+                      @endcan
+                      @can('destroy', $answer)
+                        <a href="javascript:void(0)" class="remove-answer">删除</a>
+                      @endcan
+                    </div>
+                    <div class="user-info">
+                      <div class="user-action-time">answered {{ $answer->created_at }}</div>
+                      <div>
+                        <img class="avatar" {{ avatarAttr($answer->user) }} alt="">
+                        <div class="user-details">
+                          <div class="name">
+                            <a href="{{ route('users.show', $answer->user->id) }}">
+                              {{ $answer->user->name }}
+                            </a>
+                          </div>
+                          <div class="reputation">{{ $answer->user->reputation }} 声望</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="comments">
+                <div class="list">
+                  @foreach($answer->comments as $comment)
+                    <div class="comment" id="comment{{ $comment->id }}">
+                      <hr>
+                      <span class="comment-text">{{ $comment->body }}</span>
+                      -
+                      <a class="comment-user"
+                         href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+                      <span class="comment-time">{{ $comment->created_at->format('y-m-d \a\t h:i') }}</span>
 
-    <div class="add-answer">
-      <a class="btn btn-primary" role="button" href="{{ route('answers.create', ['question_id' => $question->id]) }}">
-        回答问题
-      </a>
+                      @can('destroy', $comment)
+                        <span class="fa fa-trash comment-remove" data-id="{{ $comment->id }}"></span>
+                      @endcan
+                    </div>
+                  @endforeach
+                </div>
+                @can('comment', $question)
+                  <comment-editor type="answer" :id="{{ $answer->id }}"></comment-editor>
+                @endcan
+              </div>
+            </div>
+            <hr>
+          @endforeach
+        </div>
+
+        <div class="add-answer">
+          <a class="btn btn-primary" role="button"
+             href="{{ route('answers.create', ['question_id' => $question->id]) }}">
+            回答问题
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <p>创建于： {{ $question->created_at->diffForHumans() }}</p>
+            <p>阅读次数： {{ $question->latestViewCount() }}</p>
+          </div>
+        </div>
+        <div class="card relative-questions">
+          <div class="card-header">
+            相似问题
+          </div>
+          <div class="card-body">
+            @if (count($relatives) > 0)
+              @foreach($relatives as $question)
+                <div class="relative-question">
+                  <div><a href="{{ $question->link() }}">{{ $question->title }}</a></div>
+                  <div>
+                    <span>{{ $question->answer_count }} 回答</span>
+                    @if ($question->accept_answer === null)
+                      <span>未解决</span>
+                    @else
+                      <span><i class="fa fa-check"></i> 已解决</span>
+                    @endif
+                  </div>
+                </div>
+              @endforeach
+            @else
+              暂无~~
+            @endif
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 @endsection

@@ -19,11 +19,6 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
-    }
-
     public function answers()
     {
         return $this->hasMany(Answer::class);
@@ -42,5 +37,18 @@ class Question extends Model
     public function link($extra = null)
     {
         return route('questions.show', $this->id) . $extra;
+    }
+
+    public function relativeQuestions()
+    {
+        $sql = <<<SQL
+SELECT * FROM questions WHERE id IN (        
+SELECT DISTINCT taggable_id FROM taggables WHERE tag_id IN (        
+SELECT `tag_id` FROM taggables WHERE `taggable_id`={$this->id}
+)
+) ORDER BY created_at DESC LIMIT 10
+SQL;
+
+        return $this->fromQuery($sql);
     }
 }
